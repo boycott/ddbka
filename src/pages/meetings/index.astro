@@ -1,0 +1,171 @@
+---
+import Layout from "../../layouts/Main.astro";
+import { getCollection } from "astro:content";
+
+const allMeetings = await getCollection("meetings");
+const meetings = allMeetings.sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
+
+const now = new Date();
+const upcomingMeetings = meetings.filter((m) => m.data.date >= now);
+const pastMeetings = meetings.filter((m) => m.data.date < now);
+---
+
+<Layout title="Meetings - Dover & District Beekeepers' Association">
+  <div class="max-w-4xl mx-auto">
+    <!-- Page Header -->
+    <div class="mb-12">
+      <h1 class="text-4xl md:text-5xl font-bold text-amber-900 mb-6">
+        Meetings
+      </h1>
+      <p class="text-xl text-gray-700 leading-relaxed">
+        We meet on the last Saturday of the month (except December). During
+        Autumn/Winter, we meet at Alkham Village Hall. During Spring/Summer, we
+        meet at our Club Apiary in Eythorne.
+      </p>
+    </div>
+
+    <!-- Upcoming Meetings -->
+    {
+      upcomingMeetings.length > 0 && (
+        <div class="mb-12">
+          <h2 class="text-3xl font-bold text-amber-900 mb-6">
+            Upcoming Meetings
+          </h2>
+          <div class="grid gap-6">
+            {upcomingMeetings.map((meeting) => (
+              <article class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                <div class="flex flex-col md:flex-row gap-6">
+                  <div class="flex-shrink-0">
+                    <div class="bg-amber-600 text-white rounded-lg p-4 text-center min-w-[100px]">
+                      <div class="text-3xl font-bold">
+                        {meeting.data.date.getDate()}
+                      </div>
+                      <div class="text-sm uppercase">
+                        {meeting.data.date.toLocaleDateString("en-GB", {
+                          month: "short",
+                        })}
+                      </div>
+                      <div class="text-sm">
+                        {meeting.data.date.getFullYear()}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="flex-1">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2">
+                      <a
+                        href={`/meetings/${meeting.slug}`}
+                        class="hover:text-amber-600 transition-colors"
+                      >
+                        {meeting.data.title}
+                      </a>
+                    </h3>
+
+                    <div class="flex flex-wrap gap-4 text-sm text-gray-600 mb-3">
+                      <div class="flex items-center gap-1">
+                        <span>📍</span>
+                        <span>{meeting.data.location}</span>
+                      </div>
+                      {meeting.data.time && (
+                        <div class="flex items-center gap-1">
+                          <span>🕐</span>
+                          <span>{meeting.data.time}</span>
+                        </div>
+                      )}
+                    </div>
+
+                    <p class="text-gray-600 mb-4">{meeting.data.description}</p>
+
+                    <a
+                      href={`/meetings/${meeting.slug}`}
+                      class="text-amber-600 font-semibold hover:underline"
+                    >
+                      Read more →
+                    </a>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      )
+    }
+
+    <!-- Past Meetings -->
+    {
+      pastMeetings.length > 0 && (
+        <div>
+          <h2 class="text-3xl font-bold text-amber-900 mb-6">Past Meetings</h2>
+          <div class="grid gap-6">
+            {pastMeetings.map((meeting) => (
+              <article class="bg-gray-50 p-6 rounded-xl shadow-sm border border-gray-200">
+                <div class="flex flex-col md:flex-row gap-6">
+                  <div class="flex-shrink-0">
+                    <div class="bg-gray-400 text-white rounded-lg p-4 text-center min-w-[100px]">
+                      <div class="text-3xl font-bold">
+                        {meeting.data.date.getDate()}
+                      </div>
+                      <div class="text-sm uppercase">
+                        {meeting.data.date.toLocaleDateString("en-GB", {
+                          month: "short",
+                        })}
+                      </div>
+                      <div class="text-sm">
+                        {meeting.data.date.getFullYear()}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="flex-1">
+                    <h3 class="text-2xl font-bold text-gray-700 mb-2">
+                      <a
+                        href={`/meetings/${meeting.slug}`}
+                        class="hover:text-amber-600 transition-colors"
+                      >
+                        {meeting.data.title}
+                      </a>
+                    </h3>
+
+                    <div class="flex flex-wrap gap-4 text-sm text-gray-500 mb-3">
+                      <div class="flex items-center gap-1">
+                        <span>📍</span>
+                        <span>{meeting.data.location}</span>
+                      </div>
+                      {meeting.data.time && (
+                        <div class="flex items-center gap-1">
+                          <span>🕐</span>
+                          <span>{meeting.data.time}</span>
+                        </div>
+                      )}
+                    </div>
+
+                    <p class="text-gray-600 mb-4">{meeting.data.description}</p>
+
+                    <a
+                      href={`/meetings/${meeting.slug}`}
+                      class="text-amber-600 font-semibold hover:underline"
+                    >
+                      Read more →
+                    </a>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      )
+    }
+
+    {
+      meetings.length === 0 && (
+        <div class="bg-amber-50 p-8 rounded-xl shadow-sm border border-amber-100 text-center">
+          <p class="text-gray-700 text-lg">
+            No meetings scheduled at the moment. Check back soon!
+          </p>
+        </div>
+      )
+    }
+  </div>
+</Layout>

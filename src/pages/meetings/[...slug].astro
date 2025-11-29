@@ -1,0 +1,73 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+import Layout from "../../layouts/Main.astro";
+
+export async function getStaticPaths() {
+  const meetings = await getCollection("meetings");
+  return meetings.map((meeting) => ({
+    params: { slug: meeting.slug },
+    props: { meeting },
+  }));
+}
+
+type Props = {
+  meeting: CollectionEntry<"meetings">;
+};
+
+const { meeting } = Astro.props as Props;
+const { Content } = await meeting.render();
+---
+
+<Layout title={`${meeting.data.title} - DDBKA Meetings`}>
+  <article
+    class="max-w-3xl mx-auto bg-white p-8 rounded-xl shadow-sm border border-gray-100"
+  >
+    <header class="mb-8 border-b border-gray-100 pb-8">
+      <!-- Date Badge -->
+      <div class="mb-6">
+        <div
+          class="inline-block bg-amber-600 text-white rounded-lg p-4 text-center min-w-[120px]"
+        >
+          <div class="text-4xl font-bold">
+            {meeting.data.date.getDate()}
+          </div>
+          <div class="text-sm uppercase tracking-wide">
+            {meeting.data.date.toLocaleDateString("en-GB", { month: "long" })}
+          </div>
+          <div class="text-lg">
+            {meeting.data.date.getFullYear()}
+          </div>
+        </div>
+      </div>
+
+      <h1 class="text-4xl font-bold text-amber-900 mb-4">
+        {meeting.data.title}
+      </h1>
+
+      <div class="flex flex-wrap gap-4 text-gray-600">
+        <div class="flex items-center gap-2">
+          <span class="text-xl">📍</span>
+          <span class="font-semibold">{meeting.data.location}</span>
+        </div>
+        {
+          meeting.data.time && (
+            <div class="flex items-center gap-2">
+              <span class="text-xl">🕐</span>
+              <span class="font-semibold">{meeting.data.time}</span>
+            </div>
+          )
+        }
+      </div>
+    </header>
+
+    <div class="prose prose-amber max-w-none">
+      <Content />
+    </div>
+
+    <footer class="mt-12 pt-8 border-t border-gray-100">
+      <a href="/meetings" class="text-amber-600 font-semibold hover:underline">
+        ← Back to Meetings
+      </a>
+    </footer>
+  </article>
+</Layout>

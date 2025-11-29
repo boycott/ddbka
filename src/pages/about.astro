@@ -1,0 +1,140 @@
+---
+import Layout from "../layouts/Main.astro";
+import meeting from "../assets/KVOM0611.avif";
+---
+
+<Layout title="About - Dover & District Beekeepers' Association">
+  <div class="max-w-4xl mx-auto">
+    <!-- Page Header -->
+    <div class="mb-12">
+      <h1 class="text-4xl md:text-5xl font-bold text-amber-900 mb-8">
+        About DDBKA
+      </h1>
+      <p class="text-xl text-gray-700 leading-relaxed mb-8">
+        Dover and District Bee Keepers' Association (DDBKA) are an active group
+        in South East Kent. Our area covers from Sandwich in the north, along
+        the coast to Folkestone and Hythe, and all the rural areas behind.
+        Thanet BKA border us in the North, Canterbury and Ashford BKAs to the
+        west. We currently have over 100 members, who between them, have a wide
+        range of experience.
+      </p>
+    </div>
+
+    <!-- Featured Image -->
+    <div class="mb-12">
+      <img
+        src={meeting.src}
+        alt="DDBKA members at a meeting"
+        class="w-full h-auto rounded-2xl shadow-xl"
+      />
+    </div>
+
+    <!-- Content Sections -->
+    <div class="space-y-12 mt-12">
+      <!-- History Section -->
+      <section class="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
+        <h2 class="text-2xl font-bold text-amber-900 mb-4">Our History</h2>
+        <p class="text-gray-700 leading-relaxed">
+          The Dover and District Beekeepers' Association was formed at the
+          beginning of World War Two from a former club of beekeepers, which had
+          existed since World War One.
+        </p>
+      </section>
+
+      <!-- Affiliations Section -->
+      <section
+        class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 mt-12"
+      >
+        <h2 class="text-2xl font-bold text-amber-900 mb-4">Affiliations</h2>
+        <p class="text-gray-700 leading-relaxed">
+          We belong to the British Beekeepers' Association and Bee Disease
+          Insurance. We are independent of Kent BKA, but have close links to it
+          and with other local groups.
+        </p>
+      </section>
+
+      <!-- Meetings Section -->
+      <section class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 mt-12">
+        <h2 class="text-2xl font-bold text-amber-900 mb-4">Our Meetings</h2>
+        <p class="text-gray-700 leading-relaxed mb-4">
+          We meet on the last Saturday of the month (except December). During
+          the Autumn/Winter, we meet at Alkham Village Hall, during
+          Spring/Summer, we meet at our Club apiary in Eythorne. Often a summer
+          meeting will be held at a member's apiary, which gives members a
+          chance to see someone else's set up. Each meeting includes
+          refreshments and a raffle.
+        </p>
+        <p class="text-gray-700 leading-relaxed">
+          Our apiary meetings provide a chance for hands-on experience for
+          beginners, and those who are considering the hobby. For other members,
+          there are various talks available.
+        </p>
+      </section>
+
+      <!-- Training Section -->
+      <section class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 mt-12">
+        <h2 class="text-2xl font-bold text-amber-900 mb-4">
+          Training & Education
+        </h2>
+        <p class="text-gray-700 leading-relaxed">
+          There is a progression of training, from Beginners and Improvers
+          courses leading to the Basic Assessment. Further training for higher
+          qualifications is also available.
+        </p>
+      </section>
+
+      <!-- Honey Show Section -->
+      <section class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 mt-12">
+        <h2 class="text-2xl font-bold text-amber-900 mb-4">
+          Annual Honey Show
+        </h2>
+        <p class="text-gray-700 leading-relaxed">
+          Our Honey Show, held each October at Shepherdswell Village Hall, is
+          the largest in the area. There are a variety of competition classes to
+          enter together with member exhibits.
+        </p>
+      </section>
+
+      <!-- Resources Section -->
+      <section class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 mt-12">
+        <h2 class="text-2xl font-bold text-amber-900 mb-4">Member Resources</h2>
+        <p class="text-gray-700 leading-relaxed">
+          In addition, the Club has supplies for feeds and treatments available
+          for members to buy, as well as loan hives and sale equipment.
+        </p>
+      </section>
+
+      <!-- Get Involved Section -->
+      <section
+        class="bg-amber-50 p-8 rounded-xl shadow-sm border border-amber-100 mt-12"
+      >
+        <h2 class="text-2xl font-bold text-amber-900 mb-4">Get Involved</h2>
+        <p class="text-gray-700 leading-relaxed mb-8">
+          We are a friendly, welcoming club so please do get in touch if you
+          would like to find out more.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-8 mb-8">
+          <a
+            href="/membership"
+            class="inline-block px-8 py-3 bg-amber-600 text-white font-semibold rounded-lg shadow-md hover:bg-amber-700 transition-colors text-center"
+          >
+            Join Our Association
+          </a>
+          <a
+            href="/contact"
+            class="inline-block px-8 py-3 bg-white text-amber-900 border-2 border-amber-900 font-semibold rounded-lg shadow-sm hover:bg-amber-50 transition-colors text-center"
+          >
+            Contact Us
+          </a>
+        </div>
+        <p class="text-gray-600">
+          Email us at: <a
+            href="mailto:doveranddistrictbeekeepers@gmail.com"
+            class="text-amber-600 font-semibold hover:underline"
+            >doveranddistrictbeekeepers@gmail.com</a
+          >
+        </p>
+      </section>
+    </div>
+  </div>
+</Layout>
