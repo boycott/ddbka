@@ -21,45 +21,22 @@ import Hornet from "../assets/4cb87f_8a4df804fa0e4288b85a020fafe814dd~mv2.avif";
 
     <!-- Asian Hornet Image -->
     <div class="mb-12">
-      <img
-        src={Hornet.src}
-        alt="Asian Hornet (Vespa velutina) showing distinctive yellow legs and black body with orange band"
-        class="w-full rounded-xl shadow-lg"
-      />
-    </div>
-
-    <!-- Alert Section -->
-    <div
-      class="bg-red-50 border-l-4 border-red-500 p-8 rounded-lg shadow-sm mb-12"
-    >
-      <h2 class="text-2xl font-bold text-red-900 mb-4">
-        ⚠️ Spotted an Asian Hornet?
-      </h2>
-      <p class="text-gray-700 leading-relaxed mb-6">
-        If you think you have seen an Asian Hornet, it's crucial to report it
-        immediately. Early detection and rapid response are essential to protect
-        our pollinators.
-      </p>
-      <div class="flex flex-col sm:flex-row gap-4">
-        <a
-          href="https://www.bbka.org.uk/asian-yellow-legged-hornet"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-block px-8 py-3 bg-red-600 text-white font-semibold rounded-lg shadow-md hover:bg-red-700 transition-colors text-center"
-        >
-          Report a Sighting
-        </a>
-        <a
-          href="/contact"
-          class="inline-block px-8 py-3 bg-white text-red-900 border-2 border-red-900 font-semibold rounded-lg shadow-sm hover:bg-red-50 transition-colors text-center"
-        >
-          Contact DDBKA
-        </a>
-      </div>
+      <a
+        href="https://risc.brc.ac.uk/alert.php?species=asian_hornet"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="block hover:opacity-95 transition-opacity"
+      >
+        <img
+          src={Hornet.src}
+          alt="Asian Hornet (Vespa velutina) showing distinctive yellow legs and black body with orange band - slightly smaller and darker than our native European hornet."
+          class="w-full rounded-xl shadow-lg"
+        />
+      </a>
     </div>
 
     <!-- Information Sections -->
-    <div class="space-y-12">
+    <div class="space-y-12 mb-12">
       <!-- Identification Section -->
       <section class="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
         <h2 class="text-2xl font-bold text-amber-900 mb-4">Identification</h2>
@@ -191,6 +168,36 @@ import Hornet from "../assets/4cb87f_8a4df804fa0e4288b85a020fafe814dd~mv2.avif";
           >
         </p>
       </section>
+    </div>
+
+    <!-- Alert Section -->
+    <div
+      class="bg-red-50 border-l-4 border-red-500 p-8 rounded-lg shadow-sm mb-12"
+    >
+      <h2 class="text-2xl font-bold text-red-900 mb-4">
+        ⚠️ Spotted an Asian Hornet?
+      </h2>
+      <p class="text-gray-700 leading-relaxed mb-6">
+        If you think you have seen an Asian Hornet, it's crucial to report it
+        immediately. Early detection and rapid response are essential to protect
+        our pollinators.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a
+          href="https://risc.brc.ac.uk/alert.php?species=asian_hornet"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-block px-8 py-3 bg-red-600 text-white font-semibold rounded-lg shadow-md hover:bg-red-700 transition-colors text-center"
+        >
+          Report a Sighting
+        </a>
+        <a
+          href="/contact"
+          class="inline-block px-8 py-3 bg-white text-red-900 border-2 border-red-900 font-semibold rounded-lg shadow-sm hover:bg-red-50 transition-colors text-center"
+        >
+          Contact DDBKA
+        </a>
+      </div>
     </div>
   </div>
 </Layout>
