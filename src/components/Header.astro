@@ -3,11 +3,19 @@ import logo from "../assets/logo.avif";
 
 const navItems = [
   { href: "/about", label: "About" },
-  { href: "/news", label: "News" },
-  { href: "/meetings", label: "Meetings" },
-  { href: "/contact", label: "Contact" },
-  { href: "/committee", label: "Committee" },
   { href: "/membership", label: "Membership" },
+  { href: "/news", label: "News" },
+];
+
+const aboutUsItems = [
+  { href: "/committee", label: "Committee" },
+  { href: "/contact", label: "Contact" },
+  { href: "/meetings", label: "Meetings" },
+];
+
+const resourcesItems = [
+  { href: "/honey", label: "Local Honey" },
+  { href: "/swarms", label: "Swarms" },
   { href: "/hornets", label: "Asian Hornets" },
 ];
 ---
@@ -37,6 +45,92 @@ const navItems = [
             </li>
           ))
         }
+        <!-- Resources Dropdown -->
+        <li class="relative group">
+          <button
+            id="resources-menu-btn"
+            aria-expanded="false"
+            aria-haspopup="true"
+            class="text-gray-700 hover:text-yellow-600 font-medium transition-colors flex items-center gap-1"
+          >
+            Resources
+            <svg
+              class="w-4 h-4 transition-transform group-hover:rotate-180"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <ul
+            id="resources-menu"
+            class="absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50"
+            role="menu"
+            aria-labelledby="resources-menu-btn"
+          >
+            {
+              resourcesItems.map((item) => (
+                <li role="none">
+                  <a
+                    href={item.href}
+                    role="menuitem"
+                    class="block px-4 py-3 text-gray-700 hover:bg-amber-50 hover:text-amber-600 font-medium transition-colors first:rounded-t-lg last:rounded-b-lg"
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </li>
+        <!-- About Us Dropdown -->
+        <li class="relative group">
+          <button
+            id="aboutus-menu-btn"
+            aria-expanded="false"
+            aria-haspopup="true"
+            class="text-gray-700 hover:text-yellow-600 font-medium transition-colors flex items-center gap-1"
+          >
+            About Us
+            <svg
+              class="w-4 h-4 transition-transform group-hover:rotate-180"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <ul
+            id="aboutus-menu"
+            class="absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50"
+            role="menu"
+            aria-labelledby="aboutus-menu-btn"
+          >
+            {
+              aboutUsItems.map((item) => (
+                <li role="none">
+                  <a
+                    href={item.href}
+                    role="menuitem"
+                    class="block px-4 py-3 text-gray-700 hover:bg-amber-50 hover:text-amber-600 font-medium transition-colors first:rounded-t-lg last:rounded-b-lg"
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </li>
       </ul>
     </nav>
 
@@ -80,17 +174,215 @@ const navItems = [
           </li>
         ))
       }
+      <!-- Resources Section for Mobile -->
+      <li>
+        <button
+          id="mobile-resources-btn"
+          class="w-full text-left px-4 py-3 text-gray-700 hover:bg-amber-50 hover:text-amber-600 font-medium transition-colors flex items-center justify-between"
+          aria-expanded="false"
+        >
+          Resources
+          <svg
+            id="mobile-resources-icon"
+            class="w-4 h-4 transition-transform"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </button>
+        <ul id="mobile-resources-menu" class="hidden bg-amber-50">
+          {
+            resourcesItems.map((item) => (
+              <li>
+                <a
+                  href={item.href}
+                  class="block px-8 py-3 text-gray-700 hover:bg-amber-100 hover:text-amber-600 transition-colors"
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </li>
+      <!-- About Us Section for Mobile -->
+      <li>
+        <button
+          id="mobile-aboutus-btn"
+          class="w-full text-left px-4 py-3 text-gray-700 hover:bg-amber-50 hover:text-amber-600 font-medium transition-colors flex items-center justify-between"
+          aria-expanded="false"
+        >
+          About Us
+          <svg
+            id="mobile-aboutus-icon"
+            class="w-4 h-4 transition-transform"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </button>
+        <ul id="mobile-aboutus-menu" class="hidden bg-amber-50">
+          {
+            aboutUsItems.map((item) => (
+              <li>
+                <a
+                  href={item.href}
+                  class="block px-8 py-3 text-gray-700 hover:bg-amber-100 hover:text-amber-600 transition-colors"
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </li>
     </ul>
   </nav>
 </header>
 
 <script>
+  // Mobile menu toggle
   const btn = document.getElementById("mobile-menu-btn");
   const menu = document.getElementById("mobile-menu");
 
   if (btn && menu) {
     btn.addEventListener("click", () => {
       menu.classList.toggle("hidden");
+    });
+  }
+
+  // Mobile resources submenu toggle
+  const mobileResourcesBtn = document.getElementById("mobile-resources-btn");
+  const mobileResourcesMenu = document.getElementById("mobile-resources-menu");
+  const mobileResourcesIcon = document.getElementById("mobile-resources-icon");
+
+  if (mobileResourcesBtn && mobileResourcesMenu && mobileResourcesIcon) {
+    mobileResourcesBtn.addEventListener("click", () => {
+      const isExpanded =
+        mobileResourcesBtn.getAttribute("aria-expanded") === "true";
+      mobileResourcesBtn.setAttribute(
+        "aria-expanded",
+        (!isExpanded).toString(),
+      );
+      mobileResourcesMenu.classList.toggle("hidden");
+      mobileResourcesIcon.classList.toggle("rotate-180");
+    });
+  }
+
+  // Desktop dropdown keyboard accessibility
+  const resourcesMenuBtn = document.getElementById("resources-menu-btn");
+  const resourcesMenu = document.getElementById("resources-menu");
+
+  if (resourcesMenuBtn && resourcesMenu) {
+    // Toggle dropdown on click
+    resourcesMenuBtn.addEventListener("click", () => {
+      const isExpanded =
+        resourcesMenuBtn.getAttribute("aria-expanded") === "true";
+      resourcesMenuBtn.setAttribute("aria-expanded", (!isExpanded).toString());
+
+      if (!isExpanded) {
+        resourcesMenu.classList.remove("opacity-0", "invisible");
+        resourcesMenu.classList.add("opacity-100", "visible");
+      } else {
+        resourcesMenu.classList.add("opacity-0", "invisible");
+        resourcesMenu.classList.remove("opacity-100", "visible");
+      }
+    });
+
+    // Keyboard navigation
+    resourcesMenuBtn.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        resourcesMenuBtn.click();
+      } else if (e.key === "Escape") {
+        resourcesMenuBtn.setAttribute("aria-expanded", "false");
+        resourcesMenu.classList.add("opacity-0", "invisible");
+        resourcesMenu.classList.remove("opacity-100", "visible");
+      }
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener("click", (e) => {
+      if (
+        !resourcesMenuBtn.contains(e.target as Node) &&
+        !resourcesMenu.contains(e.target as Node)
+      ) {
+        resourcesMenuBtn.setAttribute("aria-expanded", "false");
+        resourcesMenu.classList.add("opacity-0", "invisible");
+        resourcesMenu.classList.remove("opacity-100", "visible");
+      }
+    });
+  }
+
+  // Mobile aboutus submenu toggle
+  const mobileAboutUsBtn = document.getElementById("mobile-aboutus-btn");
+  const mobileAboutUsMenu = document.getElementById("mobile-aboutus-menu");
+  const mobileAboutUsIcon = document.getElementById("mobile-aboutus-icon");
+
+  if (mobileAboutUsBtn && mobileAboutUsMenu && mobileAboutUsIcon) {
+    mobileAboutUsBtn.addEventListener("click", () => {
+      const isExpanded =
+        mobileAboutUsBtn.getAttribute("aria-expanded") === "true";
+      mobileAboutUsBtn.setAttribute("aria-expanded", (!isExpanded).toString());
+      mobileAboutUsMenu.classList.toggle("hidden");
+      mobileAboutUsIcon.classList.toggle("rotate-180");
+    });
+  }
+
+  // Desktop About Us dropdown keyboard accessibility
+  const aboutUsMenuBtn = document.getElementById("aboutus-menu-btn");
+  const aboutUsMenu = document.getElementById("aboutus-menu");
+
+  if (aboutUsMenuBtn && aboutUsMenu) {
+    // Toggle dropdown on click
+    aboutUsMenuBtn.addEventListener("click", () => {
+      const isExpanded =
+        aboutUsMenuBtn.getAttribute("aria-expanded") === "true";
+      aboutUsMenuBtn.setAttribute("aria-expanded", (!isExpanded).toString());
+
+      if (!isExpanded) {
+        aboutUsMenu.classList.remove("opacity-0", "invisible");
+        aboutUsMenu.classList.add("opacity-100", "visible");
+      } else {
+        aboutUsMenu.classList.add("opacity-0", "invisible");
+        aboutUsMenu.classList.remove("opacity-100", "visible");
+      }
+    });
+
+    // Keyboard navigation
+    aboutUsMenuBtn.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        aboutUsMenuBtn.click();
+      } else if (e.key === "Escape") {
+        aboutUsMenuBtn.setAttribute("aria-expanded", "false");
+        aboutUsMenu.classList.add("opacity-0", "invisible");
+        aboutUsMenu.classList.remove("opacity-100", "visible");
+      }
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener("click", (e) => {
+      if (
+        !aboutUsMenuBtn.contains(e.target as Node) &&
+        !aboutUsMenu.contains(e.target as Node)
+      ) {
+        aboutUsMenuBtn.setAttribute("aria-expanded", "false");
+        aboutUsMenu.classList.add("opacity-0", "invisible");
+        aboutUsMenu.classList.remove("opacity-100", "visible");
+      }
     });
   }
 </script>
