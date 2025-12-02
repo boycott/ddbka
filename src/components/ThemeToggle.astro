@@ -1,54 +1,145 @@
-<button
-  id="theme-toggle"
-  aria-label="Toggle theme"
-  class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
->
-  <!-- Sun icon (shown in dark mode) -->
-  <svg
-    id="theme-toggle-sun"
-    class="w-6 h-6 hidden dark:block text-yellow-400"
-    fill="none"
-    stroke="currentColor"
-    viewBox="0 0 24 24"
+<div class="relative group">
+  <button
+    id="theme-toggle-btn"
+    aria-label="Theme menu"
+    aria-haspopup="true"
+    aria-expanded="false"
+    class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors flex items-center gap-1"
   >
-    <path
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      stroke-width="2"
-      d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
-    ></path>
-  </svg>
-  <!-- Moon icon (shown in light mode) -->
-  <svg
-    id="theme-toggle-moon"
-    class="w-6 h-6 block dark:hidden text-gray-700"
-    fill="none"
-    stroke="currentColor"
-    viewBox="0 0 24 24"
+    <!-- Sun icon (Light) -->
+    <svg
+      id="icon-light"
+      class="w-6 h-6 hidden text-amber-500"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+      ></path>
+    </svg>
+    <!-- Moon icon (Dark) -->
+    <svg
+      id="icon-dark"
+      class="w-6 h-6 hidden text-indigo-400"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+      ></path>
+    </svg>
+    <!-- System icon (System) -->
+    <svg
+      id="icon-system"
+      class="w-6 h-6 hidden text-gray-500 dark:text-gray-400"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+      ></path>
+    </svg>
+    <!-- Chevron -->
+    <svg
+      class="w-4 h-4 text-gray-500 dark:text-gray-400"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M19 9l-7 7-7-7"></path>
+    </svg>
+  </button>
+
+  <!-- Dropdown Menu -->
+  <ul
+    id="theme-menu"
+    class="absolute right-0 mt-2 w-36 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-100 dark:border-gray-700 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50"
+    role="menu"
   >
-    <path
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      stroke-width="2"
-      d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
-    ></path>
-  </svg>
-  <!-- System icon (shown when system mode is active) -->
-  <svg
-    id="theme-toggle-system"
-    class="w-6 h-6 hidden text-gray-700 dark:text-gray-300"
-    fill="none"
-    stroke="currentColor"
-    viewBox="0 0 24 24"
-  >
-    <path
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      stroke-width="2"
-      d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-    ></path>
-  </svg>
-</button>
+    <li>
+      <button
+        data-theme="light"
+        class="w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-amber-50 dark:hover:bg-gray-700 hover:text-amber-600 dark:hover:text-amber-400 flex items-center gap-2 first:rounded-t-lg"
+        role="menuitem"
+      >
+        <svg
+          class="w-4 h-4"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+          ></path>
+        </svg>
+        Light
+      </button>
+    </li>
+    <li>
+      <button
+        data-theme="dark"
+        class="w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-amber-50 dark:hover:bg-gray-700 hover:text-amber-600 dark:hover:text-amber-400 flex items-center gap-2"
+        role="menuitem"
+      >
+        <svg
+          class="w-4 h-4"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+          ></path>
+        </svg>
+        Dark
+      </button>
+    </li>
+    <li>
+      <button
+        data-theme="system"
+        class="w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-amber-50 dark:hover:bg-gray-700 hover:text-amber-600 dark:hover:text-amber-400 flex items-center gap-2 last:rounded-b-lg"
+        role="menuitem"
+      >
+        <svg
+          class="w-4 h-4"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+          ></path>
+        </svg>
+        System
+      </button>
+    </li>
+  </ul>
+</div>
 
 <script>
   type Theme = "light" | "dark" | "system";
@@ -69,70 +160,117 @@
     return "system";
   }
 
-  function applyTheme(theme: Theme) {
+  function updateUI(theme: Theme) {
     const effectiveTheme = theme === "system" ? getSystemTheme() : theme;
 
+    // Update HTML class
     if (effectiveTheme === "dark") {
       document.documentElement.classList.add("dark");
     } else {
       document.documentElement.classList.remove("dark");
     }
 
-    // Update icon visibility
-    const sunIcon = document.getElementById("theme-toggle-sun");
-    const moonIcon = document.getElementById("theme-toggle-moon");
-    const systemIcon = document.getElementById("theme-toggle-system");
+    // Update Button Icon
+    const iconLight = document.getElementById("icon-light");
+    const iconDark = document.getElementById("icon-dark");
+    const iconSystem = document.getElementById("icon-system");
 
-    if (theme === "system") {
-      sunIcon?.classList.add("hidden");
-      moonIcon?.classList.add("hidden");
-      systemIcon?.classList.remove("hidden");
-      if (effectiveTheme === "dark") {
-        systemIcon?.classList.add("dark:text-gray-300");
-      }
+    // Hide all first
+    iconLight?.classList.add("hidden");
+    iconDark?.classList.add("hidden");
+    iconSystem?.classList.add("hidden");
+
+    // Show appropriate icon based on SELECTED theme (not effective theme)
+    if (theme === "light") {
+      iconLight?.classList.remove("hidden");
+    } else if (theme === "dark") {
+      iconDark?.classList.remove("hidden");
     } else {
-      systemIcon?.classList.add("hidden");
-      if (effectiveTheme === "dark") {
-        sunIcon?.classList.remove("hidden");
-        moonIcon?.classList.add("hidden");
+      iconSystem?.classList.remove("hidden");
+    }
+
+    // Update active state in menu
+    const menuItems = document.querySelectorAll("[data-theme]");
+    menuItems.forEach((item) => {
+      if (item.getAttribute("data-theme") === theme) {
+        item.classList.add(
+          "bg-amber-50",
+          "dark:bg-gray-700",
+          "text-amber-600",
+          "dark:text-amber-400",
+        );
       } else {
-        sunIcon?.classList.add("hidden");
-        moonIcon?.classList.remove("hidden");
+        item.classList.remove(
+          "bg-amber-50",
+          "dark:bg-gray-700",
+          "text-amber-600",
+          "dark:text-amber-400",
+        );
       }
-    }
+    });
   }
 
-  function cycleTheme() {
-    const currentTheme = getStoredTheme();
-    let nextTheme: Theme;
-
-    if (currentTheme === "light") {
-      nextTheme = "dark";
-    } else if (currentTheme === "dark") {
-      nextTheme = "system";
-    } else {
-      nextTheme = "light";
-    }
-
-    localStorage.setItem(STORAGE_KEY, nextTheme);
-    applyTheme(nextTheme);
+  function setTheme(theme: Theme) {
+    localStorage.setItem(STORAGE_KEY, theme);
+    updateUI(theme);
   }
 
-  // Initialize theme on page load
+  // Initialize
   const initialTheme = getStoredTheme();
-  applyTheme(initialTheme);
+  updateUI(initialTheme);
 
-  // Set up toggle button
-  const toggleButton = document.getElementById("theme-toggle");
-  toggleButton?.addEventListener("click", cycleTheme);
+  // Event Listeners
+  const buttons = document.querySelectorAll("[data-theme]");
+  buttons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const theme = btn.getAttribute("data-theme") as Theme;
+      setTheme(theme);
+    });
+  });
 
-  // Listen for system theme changes when in system mode
+  // Toggle Menu on Mobile/Click (optional, since we use group-hover for desktop)
+  const toggleBtn = document.getElementById("theme-toggle-btn");
+  const menu = document.getElementById("theme-menu");
+
+  if (toggleBtn && menu) {
+    toggleBtn.addEventListener("click", (e) => {
+      // Only toggle on click if not using hover (e.g. mobile)
+      // But for simplicity, we can just let hover handle desktop
+      // and click handle mobile.
+      // However, the CSS is group-hover, which works on hover.
+      // For click support (mobile), we might need to toggle a class.
+      const isExpanded = toggleBtn.getAttribute("aria-expanded") === "true";
+      toggleBtn.setAttribute("aria-expanded", (!isExpanded).toString());
+
+      if (!isExpanded) {
+        menu.classList.remove("invisible", "opacity-0");
+        menu.classList.add("visible", "opacity-100");
+      } else {
+        menu.classList.add("invisible", "opacity-0");
+        menu.classList.remove("visible", "opacity-100");
+      }
+      e.stopPropagation();
+    });
+
+    // Close on click outside
+    document.addEventListener("click", (e) => {
+      if (
+        !toggleBtn.contains(e.target as Node) &&
+        !menu.contains(e.target as Node)
+      ) {
+        toggleBtn.setAttribute("aria-expanded", "false");
+        menu.classList.add("invisible", "opacity-0");
+        menu.classList.remove("visible", "opacity-100");
+      }
+    });
+  }
+
+  // Listen for system changes
   window
     .matchMedia("(prefers-color-scheme: dark)")
     .addEventListener("change", () => {
-      const currentTheme = getStoredTheme();
-      if (currentTheme === "system") {
-        applyTheme("system");
+      if (getStoredTheme() === "system") {
+        updateUI("system");
       }
     });
 </script>

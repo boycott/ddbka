@@ -1,9 +1,12 @@
 ---
 import Layout from "../layouts/Main.astro";
-import Honey from "../assets/honey-dipper.avif";
+import HoneyImage from "../assets/honey-dipper.avif";
 ---
 
-<Layout title="Local Honey - Dover & District Beekeepers' Association">
+<Layout
+  title="Local Honey - Dover & District Beekeepers' Association"
+  description="Discover the benefits of local honey and find out where to buy pure, raw honey from our members."
+>
   <div class="max-w-4xl mx-auto">
     <!-- Page Header -->
     <div class="mb-12">
@@ -19,7 +22,7 @@ import Honey from "../assets/honey-dipper.avif";
     <!-- Featured Image -->
     <div class="mb-12">
       <img
-        src={Honey.src}
+        src={HoneyImage.src}
         alt="Honey in a pot and a dipper"
         class="w-full h-auto rounded-2xl shadow-xl"
       />

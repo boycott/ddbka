@@ -18,7 +18,11 @@ const { meeting } = Astro.props as Props;
 const { Content } = await meeting.render();
 ---
 
-<Layout title={`${meeting.data.title} - DDBKA Meetings`}>
+<Layout
+  title={`${meeting.data.title} - DDBKA Meetings`}
+  description={meeting.data.description}
+  type="article"
+>
   <article
     class="max-w-3xl mx-auto bg-white dark:bg-gray-800 p-8 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700"
   >

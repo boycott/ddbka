@@ -18,7 +18,11 @@ const { post } = Astro.props as Props;
 const { Content } = await post.render();
 ---
 
-<Layout title={`${post.data.title} - DDBKA News`}>
+<Layout
+  title={`${post.data.title} - DDBKA News`}
+  description={post.data.description}
+  type="article"
+>
   <article
     class="max-w-3xl mx-auto bg-white dark:bg-gray-800 p-8 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700"
   >
