@@ -72,10 +72,10 @@ const committeeMembers = [
   <div class="max-w-6xl mx-auto">
     <!-- Page Header -->
     <div class="mb-12">
-      <h1 class="text-4xl md:text-5xl font-bold text-amber-900 mb-6">
+      <h1 class="text-4xl md:text-5xl font-bold text-amber-600 mb-6">
         Our Committee
       </h1>
-      <p class="text-xl text-gray-700 leading-relaxed">
+      <p class="text-xl text-gray-700 dark:text-gray-200 leading-relaxed">
         Please find below the names of our Committee and their responsibilities.
         If you would like to contact us, please do so at email: <a
           href="mailto:doveranddistrictbeekeepers@gmail.com"
@@ -89,25 +89,25 @@ const committeeMembers = [
     <div class="grid md:grid-cols-2 gap-8">
       {
         committeeMembers.map((member) => (
-          <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 flex flex-col sm:flex-row gap-6 items-start">
+          <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 flex flex-col sm:flex-row gap-6 items-start">
             <div class="flex-shrink-0">
               <Image
                 src={placeholderAvatar}
                 alt={member.name}
-                class="w-24 h-24 rounded-full object-cover border-4 border-amber-50"
+                class="w-24 h-24 rounded-full object-cover border-4 border-amber-50 dark:border-gray-700"
               />
             </div>
             <div class="flex-grow">
-              <h2 class="text-2xl font-bold text-amber-900 mb-2">
+              <h2 class="text-2xl font-bold text-amber-600 mb-2">
                 {member.name}
               </h2>
-              <p class="text-lg font-semibold text-gray-700 mb-4">
+              <p class="text-lg font-semibold text-gray-700 dark:text-gray-200 mb-4">
                 {member.role}
               </p>
               {member.responsibilities.length > 0 && (
                 <ul class="space-y-2">
                   {member.responsibilities.map((responsibility) => (
-                    <li class="text-gray-600 flex items-start">
+                    <li class="text-gray-600 dark:text-gray-300 flex items-start">
                       <span class="text-amber-600 mr-2">•</span>
                       <span>{responsibility}</span>
                     </li>
@@ -122,10 +122,10 @@ const committeeMembers = [
 
     <!-- Contact Section -->
     <div
-      class="mt-12 bg-amber-50 p-8 rounded-xl shadow-sm border border-amber-100"
+      class="mt-12 bg-amber-50 dark:bg-gray-800 p-8 rounded-xl shadow-sm border border-amber-100 dark:border-gray-700"
     >
-      <h2 class="text-2xl font-bold text-amber-900 mb-4">Get in Touch</h2>
-      <p class="text-gray-700 leading-relaxed mb-6">
+      <h2 class="text-2xl font-bold text-amber-600 mb-4">Get in Touch</h2>
+      <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
         If you have any questions or would like to get involved with the
         committee, please don't hesitate to reach out.
       </p>

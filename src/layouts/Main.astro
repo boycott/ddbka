@@ -1,6 +1,6 @@
 ---
 import "../styles/global.css";
-import Analytics from '@vercel/analytics/astro'
+import Analytics from "@vercel/analytics/astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 
@@ -15,8 +15,45 @@ const title = Astro.props.title;
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+
+    <!-- Inline theme script to prevent flash -->
+    <script is:inline>
+      (function () {
+        const STORAGE_KEY = "theme-preference";
+
+        function getSystemTheme() {
+          return window.matchMedia("(prefers-color-scheme: dark)").matches
+            ? "dark"
+            : "light";
+        }
+
+        function getStoredTheme() {
+          const stored = localStorage.getItem(STORAGE_KEY);
+          if (stored === "light" || stored === "dark" || stored === "system") {
+            return stored;
+          }
+          return "system";
+        }
+
+        const theme = getStoredTheme();
+        const effectiveTheme = theme === "system" ? getSystemTheme() : theme;
+
+        if (effectiveTheme === "dark") {
+          document.documentElement.classList.add("dark");
+        }
+
+        // Font Size Logic
+        const FONT_SIZE_KEY = "font-size-preference";
+        const storedFontSize = localStorage.getItem(FONT_SIZE_KEY);
+        if (storedFontSize) {
+          document.documentElement.style.fontSize = storedFontSize;
+        }
+      })();
+    </script>
   </head>
-  <body class="flex flex-col min-h-full bg-orange-50 text-gray-900 font-sans">
+  <body
+    class="flex flex-col min-h-full bg-orange-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans transition-colors"
+  >
     <Header />
     <main class="flex-grow container mx-auto px-4 py-8">
       <slot />

@@ -20,10 +20,12 @@ const { Content } = await post.render();
 
 <Layout title={`${post.data.title} - DDBKA News`}>
   <article
-    class="max-w-3xl mx-auto bg-white p-8 rounded-xl shadow-sm border border-gray-100"
+    class="max-w-3xl mx-auto bg-white dark:bg-gray-800 p-8 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700"
   >
-    <header class="mb-8 border-b border-gray-100 pb-8">
-      <div class="flex items-center gap-2 text-sm text-gray-500 mb-4">
+    <header class="mb-8 border-b border-gray-100 dark:border-gray-700 pb-8">
+      <div
+        class="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 mb-4"
+      >
         <time datetime={post.data.pubDate.toISOString()}>
           {
             post.data.pubDate.toLocaleDateString("en-GB", {
@@ -37,13 +39,13 @@ const { Content } = await post.render();
         <span>{post.data.author}</span>
       </div>
 
-      <h1 class="text-4xl font-bold text-amber-900 mb-4">{post.data.title}</h1>
+      <h1 class="text-4xl font-bold text-amber-600 mb-4">{post.data.title}</h1>
 
       {
         post.data.tags.length > 0 && (
           <div class="flex gap-2">
             {post.data.tags.map((tag) => (
-              <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-full">
+              <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 text-xs rounded-full">
                 #{tag}
               </span>
             ))}
@@ -52,11 +54,11 @@ const { Content } = await post.render();
       }
     </header>
 
-    <div class="prose prose-amber max-w-none">
+    <div class="prose prose-amber dark:prose-invert max-w-none">
       <Content />
     </div>
 
-    <footer class="mt-12 pt-8 border-t border-gray-100">
+    <footer class="mt-12 pt-8 border-t border-gray-100 dark:border-gray-700">
       <a href="/news" class="text-amber-600 font-semibold hover:underline">
         &larr; Back to News
       </a>

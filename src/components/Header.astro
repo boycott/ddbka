@@ -1,8 +1,10 @@
 ---
 import logo from "../assets/logo.avif";
+import ThemeToggle from "./ThemeToggle.astro";
+import FontSizeToggle from "./FontSizeToggle.astro";
 
 const navItems = [
-  { href: "/about", label: "About" },
+  { href: "/about", label: "The Association" },
   { href: "/membership", label: "Membership" },
   { href: "/news", label: "News" },
 ];
@@ -20,7 +22,9 @@ const resourcesItems = [
 ];
 ---
 
-<header class="bg-white shadow-md sticky top-0 z-50">
+<header
+  class="bg-white dark:bg-gray-800 shadow-md sticky top-0 z-50 transition-colors"
+>
   <div class="container mx-auto px-4 py-3 flex justify-between items-center">
     <a href="/" class="flex items-center gap-2 group">
       <img
@@ -31,14 +35,14 @@ const resourcesItems = [
     </a>
 
     <!-- Desktop Nav -->
-    <nav class="hidden md:block">
+    <nav class="hidden md:flex items-center gap-6">
       <ul class="flex space-x-6">
         {
           navItems.map((item) => (
             <li>
               <a
                 href={item.href}
-                class="text-gray-700 hover:text-yellow-600 font-medium transition-colors"
+                class="text-gray-700 dark:text-gray-200 hover:text-yellow-600 dark:hover:text-yellow-400 font-medium transition-colors"
               >
                 {item.label}
               </a>
@@ -51,7 +55,7 @@ const resourcesItems = [
             id="resources-menu-btn"
             aria-expanded="false"
             aria-haspopup="true"
-            class="text-gray-700 hover:text-yellow-600 font-medium transition-colors flex items-center gap-1"
+            class="text-gray-700 dark:text-gray-200 hover:text-yellow-600 dark:hover:text-yellow-400 font-medium transition-colors flex items-center gap-1"
           >
             Resources
             <svg
@@ -69,7 +73,7 @@ const resourcesItems = [
           </button>
           <ul
             id="resources-menu"
-            class="absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50"
+            class="absolute left-0 mt-2 w-48 bg-white dark:bg-gray-700 rounded-lg shadow-lg border border-gray-100 dark:border-gray-600 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50"
             role="menu"
             aria-labelledby="resources-menu-btn"
           >
@@ -79,7 +83,7 @@ const resourcesItems = [
                   <a
                     href={item.href}
                     role="menuitem"
-                    class="block px-4 py-3 text-gray-700 hover:bg-amber-50 hover:text-amber-600 font-medium transition-colors first:rounded-t-lg last:rounded-b-lg"
+                    class="block px-4 py-3 text-gray-700 dark:text-gray-200 hover:bg-amber-50 dark:hover:bg-amber-900 hover:text-amber-600 dark:hover:text-amber-400 font-medium transition-colors first:rounded-t-lg last:rounded-b-lg"
                   >
                     {item.label}
                   </a>
@@ -94,7 +98,7 @@ const resourcesItems = [
             id="aboutus-menu-btn"
             aria-expanded="false"
             aria-haspopup="true"
-            class="text-gray-700 hover:text-yellow-600 font-medium transition-colors flex items-center gap-1"
+            class="text-gray-700 dark:text-gray-200 hover:text-yellow-600 dark:hover:text-yellow-400 font-medium transition-colors flex items-center gap-1"
           >
             About Us
             <svg
@@ -112,7 +116,7 @@ const resourcesItems = [
           </button>
           <ul
             id="aboutus-menu"
-            class="absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50"
+            class="absolute left-0 mt-2 w-48 bg-white dark:bg-gray-700 rounded-lg shadow-lg border border-gray-100 dark:border-gray-600 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50"
             role="menu"
             aria-labelledby="aboutus-menu-btn"
           >
@@ -122,7 +126,7 @@ const resourcesItems = [
                   <a
                     href={item.href}
                     role="menuitem"
-                    class="block px-4 py-3 text-gray-700 hover:bg-amber-50 hover:text-amber-600 font-medium transition-colors first:rounded-t-lg last:rounded-b-lg"
+                    class="block px-4 py-3 text-gray-700 dark:text-gray-200 hover:bg-amber-50 dark:hover:bg-amber-900 hover:text-amber-600 dark:hover:text-amber-400 font-medium transition-colors first:rounded-t-lg last:rounded-b-lg"
                   >
                     {item.label}
                   </a>
@@ -132,34 +136,42 @@ const resourcesItems = [
           </ul>
         </li>
       </ul>
+      <div class="flex items-center gap-2">
+        <FontSizeToggle />
+        <ThemeToggle />
+      </div>
     </nav>
 
-    <!-- Mobile Menu Button -->
-    <button
-      id="mobile-menu-btn"
-      class="md:hidden text-gray-700 hover:text-amber-600 focus:outline-none"
-      aria-label="Toggle navigation menu"
-    >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        class="h-8 w-8"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
+    <!-- Mobile Controls -->
+    <div class="md:hidden flex items-center gap-2">
+      <FontSizeToggle />
+      <ThemeToggle />
+      <button
+        id="mobile-menu-btn"
+        class="text-gray-700 dark:text-gray-200 hover:text-amber-600 dark:hover:text-amber-400 focus:outline-none"
+        aria-label="Toggle navigation menu"
       >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M4 6h16M4 12h16M4 18h16"></path>
-      </svg>
-    </button>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-8 w-8"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
   </div>
 
   <!-- Mobile Nav Drawer -->
   <nav
     id="mobile-menu"
-    class="hidden md:hidden bg-white border-t border-gray-100"
+    class="hidden md:hidden bg-white dark:bg-gray-800 border-t border-gray-100 dark:border-gray-700"
   >
     <ul class="flex flex-col py-2">
       {
@@ -167,7 +179,7 @@ const resourcesItems = [
           <li>
             <a
               href={item.href}
-              class="block px-4 py-3 text-gray-700 hover:bg-amber-50 hover:text-amber-600 font-medium transition-colors"
+              class="block px-4 py-3 text-gray-700 dark:text-gray-200 hover:bg-amber-50 dark:hover:bg-amber-900 hover:text-amber-600 dark:hover:text-amber-400 font-medium transition-colors"
             >
               {item.label}
             </a>
@@ -178,7 +190,7 @@ const resourcesItems = [
       <li>
         <button
           id="mobile-resources-btn"
-          class="w-full text-left px-4 py-3 text-gray-700 hover:bg-amber-50 hover:text-amber-600 font-medium transition-colors flex items-center justify-between"
+          class="w-full text-left px-4 py-3 text-gray-700 dark:text-gray-200 hover:bg-amber-50 dark:hover:bg-amber-900 hover:text-amber-600 dark:hover:text-amber-400 font-medium transition-colors flex items-center justify-between"
           aria-expanded="false"
         >
           Resources
@@ -196,13 +208,16 @@ const resourcesItems = [
               d="M19 9l-7 7-7-7"></path>
           </svg>
         </button>
-        <ul id="mobile-resources-menu" class="hidden bg-amber-50">
+        <ul
+          id="mobile-resources-menu"
+          class="hidden bg-amber-50 dark:bg-amber-900"
+        >
           {
             resourcesItems.map((item) => (
               <li>
                 <a
                   href={item.href}
-                  class="block px-8 py-3 text-gray-700 hover:bg-amber-100 hover:text-amber-600 transition-colors"
+                  class="block px-8 py-3 text-gray-700 dark:text-gray-200 hover:bg-amber-100 dark:hover:bg-amber-800 hover:text-amber-600 dark:hover:text-amber-400 transition-colors"
                 >
                   {item.label}
                 </a>
@@ -215,7 +230,7 @@ const resourcesItems = [
       <li>
         <button
           id="mobile-aboutus-btn"
-          class="w-full text-left px-4 py-3 text-gray-700 hover:bg-amber-50 hover:text-amber-600 font-medium transition-colors flex items-center justify-between"
+          class="w-full text-left px-4 py-3 text-gray-700 dark:text-gray-200 hover:bg-amber-50 dark:hover:bg-amber-900 hover:text-amber-600 dark:hover:text-amber-400 font-medium transition-colors flex items-center justify-between"
           aria-expanded="false"
         >
           About Us
@@ -233,13 +248,16 @@ const resourcesItems = [
               d="M19 9l-7 7-7-7"></path>
           </svg>
         </button>
-        <ul id="mobile-aboutus-menu" class="hidden bg-amber-50">
+        <ul
+          id="mobile-aboutus-menu"
+          class="hidden bg-amber-50 dark:bg-amber-900"
+        >
           {
             aboutUsItems.map((item) => (
               <li>
                 <a
                   href={item.href}
-                  class="block px-8 py-3 text-gray-700 hover:bg-amber-100 hover:text-amber-600 transition-colors"
+                  class="block px-8 py-3 text-gray-700 dark:text-gray-200 hover:bg-amber-100 dark:hover:bg-amber-800 hover:text-amber-600 dark:hover:text-amber-400 transition-colors"
                 >
                   {item.label}
                 </a>

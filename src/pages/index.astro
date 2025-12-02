@@ -43,17 +43,19 @@ const formatDate = (date: Date) => {
 		<!-- Text Content -->
 		<div class="flex-1 space-y-6 text-center md:text-left">
 			<h1
-				class="text-4xl md:text-5xl lg:text-6xl font-bold text-amber-900 leading-tight"
+				class="text-4xl md:text-5xl lg:text-6xl font-bold text-amber-600 leading-tight"
 			>
 				Welcome to Dover & District Beekeepers
 			</h1>
 
-			<p class="text-lg md:text-xl text-gray-700 leading-relaxed max-w-2xl">
+			<p
+				class="text-lg md:text-xl text-gray-700 dark:text-gray-200 leading-relaxed max-w-2xl"
+			>
 				Are you interested in keeping bees? Want to know more about honey? Think
 				you've spotted an Asian Hornet? Have a swarm in your garden?
 			</p>
 
-			<p class="text-lg text-gray-700 font-medium">
+			<p class="text-lg text-gray-700 dark:text-gray-400 font-medium">
 				Then you're in the correct place! Please explore our website to find out
 				more.
 			</p>
@@ -98,20 +100,20 @@ const formatDate = (date: Date) => {
 		<!-- Latest News -->
 		{
 			latestNews && (
-				<div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-					<h3 class="text-xl font-bold text-amber-900 mb-3">Latest News</h3>
-					<p class="text-sm text-gray-500 mb-2">
+				<div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
+					<h3 class="text-xl font-bold text-amber-600 mb-3">Latest News</h3>
+					<p class="text-sm text-gray-500 dark:text-gray-400 mb-2">
 						{formatDate(latestNews.data.pubDate)}
 					</p>
-					<p class="font-semibold text-gray-800 mb-2">
+					<p class="font-semibold text-gray-800 dark:text-gray-100 mb-2">
 						{latestNews.data.title}
 					</p>
-					<p class="text-gray-600 mb-4 text-sm">
+					<p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">
 						{latestNews.data.description}
 					</p>
 					<a
 						href={`/news/${latestNews.slug}`}
-						class="text-amber-600 font-semibold hover:underline"
+						class="text-amber-600 dark:text-amber-500 font-semibold hover:underline"
 					>
 						Read more &rarr;
 					</a>
@@ -122,23 +124,23 @@ const formatDate = (date: Date) => {
 		<!-- Most Recent Past Meeting -->
 		{
 			latestPastMeeting && (
-				<div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-					<h3 class="text-xl font-bold text-amber-900 mb-3">
+				<div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
+					<h3 class="text-xl font-bold text-amber-600 mb-3">
 						Most Recent Meeting
 					</h3>
-					<p class="text-sm text-gray-500 mb-2">
+					<p class="text-sm text-gray-500 dark:text-gray-400 mb-2">
 						{formatDate(latestPastMeeting.data.date)}
 						{latestPastMeeting.data.time && ` • ${latestPastMeeting.data.time}`}
 					</p>
-					<p class="font-semibold text-gray-800 mb-2">
+					<p class="font-semibold text-gray-800 dark:text-gray-100 mb-2">
 						{latestPastMeeting.data.title}
 					</p>
-					<p class="text-gray-600 mb-4 text-sm">
+					<p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">
 						{latestPastMeeting.data.description}
 					</p>
 					<a
 						href={`/meetings/${latestPastMeeting.slug}`}
-						class="text-amber-600 font-semibold hover:underline"
+						class="text-amber-600 dark:text-amber-500 font-semibold hover:underline"
 					>
 						View details &rarr;
 					</a>
@@ -149,21 +151,21 @@ const formatDate = (date: Date) => {
 		<!-- Next Upcoming Meeting -->
 		{
 			nextMeeting && (
-				<div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-					<h3 class="text-xl font-bold text-amber-900 mb-3">Next Meeting</h3>
-					<p class="text-sm text-gray-500 mb-2">
+				<div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
+					<h3 class="text-xl font-bold text-amber-600 mb-3">Next Meeting</h3>
+					<p class="text-sm text-gray-500 dark:text-gray-400 mb-2">
 						{formatDate(nextMeeting.data.date)}
 						{nextMeeting.data.time && ` • ${nextMeeting.data.time}`}
 					</p>
-					<p class="font-semibold text-gray-800 mb-2">
+					<p class="font-semibold text-gray-800 dark:text-gray-100 mb-2">
 						{nextMeeting.data.title}
 					</p>
-					<p class="text-gray-600 mb-4 text-sm">
+					<p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">
 						{nextMeeting.data.description}
 					</p>
 					<a
 						href={`/meetings/${nextMeeting.slug}`}
-						class="text-amber-600 font-semibold hover:underline"
+						class="text-amber-600 dark:text-amber-500 font-semibold hover:underline"
 					>
 						View details &rarr;
 					</a>

@@ -20,9 +20,9 @@ const { Content } = await meeting.render();
 
 <Layout title={`${meeting.data.title} - DDBKA Meetings`}>
   <article
-    class="max-w-3xl mx-auto bg-white p-8 rounded-xl shadow-sm border border-gray-100"
+    class="max-w-3xl mx-auto bg-white dark:bg-gray-800 p-8 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700"
   >
-    <header class="mb-8 border-b border-gray-100 pb-8">
+    <header class="mb-8 border-b border-gray-100 dark:border-gray-700 pb-8">
       <!-- Date Badge -->
       <div class="mb-6">
         <div
@@ -40,11 +40,11 @@ const { Content } = await meeting.render();
         </div>
       </div>
 
-      <h1 class="text-4xl font-bold text-amber-900 mb-4">
+      <h1 class="text-4xl font-bold text-amber-600 mb-4">
         {meeting.data.title}
       </h1>
 
-      <div class="flex flex-wrap gap-4 text-gray-600">
+      <div class="flex flex-wrap gap-4 text-gray-600 dark:text-gray-300">
         <div class="flex items-center gap-2">
           <span class="text-xl">📍</span>
           <span class="font-semibold">{meeting.data.location}</span>
@@ -60,11 +60,11 @@ const { Content } = await meeting.render();
       </div>
     </header>
 
-    <div class="prose prose-amber max-w-none">
+    <div class="prose prose-amber dark:prose-invert max-w-none">
       <Content />
     </div>
 
-    <footer class="mt-12 pt-8 border-t border-gray-100">
+    <footer class="mt-12 pt-8 border-t border-gray-100 dark:border-gray-700">
       <a href="/meetings" class="text-amber-600 font-semibold hover:underline">
         ← Back to Meetings
       </a>
