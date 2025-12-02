@@ -1,15 +1,13 @@
-<div class="relative group">
+<div class="theme-toggle-component relative group">
   <button
-    id="theme-toggle-btn"
+    class="theme-toggle-btn p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors flex items-center gap-1"
     aria-label="Theme menu"
     aria-haspopup="true"
     aria-expanded="false"
-    class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors flex items-center gap-1"
   >
     <!-- Sun icon (Light) -->
     <svg
-      id="icon-light"
-      class="w-6 h-6 hidden text-amber-500"
+      class="theme-icon theme-icon-light w-6 h-6 hidden text-amber-500"
       fill="none"
       stroke="currentColor"
       viewBox="0 0 24 24"
@@ -23,8 +21,7 @@
     </svg>
     <!-- Moon icon (Dark) -->
     <svg
-      id="icon-dark"
-      class="w-6 h-6 hidden text-indigo-400"
+      class="theme-icon theme-icon-dark w-6 h-6 hidden text-indigo-400"
       fill="none"
       stroke="currentColor"
       viewBox="0 0 24 24"
@@ -38,8 +35,7 @@
     </svg>
     <!-- System icon (System) -->
     <svg
-      id="icon-system"
-      class="w-6 h-6 hidden text-gray-500 dark:text-gray-400"
+      class="theme-icon theme-icon-system w-6 h-6 hidden text-gray-500 dark:text-gray-400"
       fill="none"
       stroke="currentColor"
       viewBox="0 0 24 24"
@@ -68,14 +64,13 @@
 
   <!-- Dropdown Menu -->
   <ul
-    id="theme-menu"
-    class="absolute right-0 mt-2 w-36 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-100 dark:border-gray-700 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50"
+    class="theme-menu absolute right-0 mt-2 w-36 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-100 dark:border-gray-700 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50"
     role="menu"
   >
     <li>
       <button
         data-theme="light"
-        class="w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-amber-50 dark:hover:bg-gray-700 hover:text-amber-600 dark:hover:text-amber-400 flex items-center gap-2 first:rounded-t-lg"
+        class="theme-option w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-amber-50 dark:hover:bg-gray-700 hover:text-amber-600 dark:hover:text-amber-400 flex items-center gap-2 first:rounded-t-lg"
         role="menuitem"
       >
         <svg
@@ -97,7 +92,7 @@
     <li>
       <button
         data-theme="dark"
-        class="w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-amber-50 dark:hover:bg-gray-700 hover:text-amber-600 dark:hover:text-amber-400 flex items-center gap-2"
+        class="theme-option w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-amber-50 dark:hover:bg-gray-700 hover:text-amber-600 dark:hover:text-amber-400 flex items-center gap-2"
         role="menuitem"
       >
         <svg
@@ -119,7 +114,7 @@
     <li>
       <button
         data-theme="system"
-        class="w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-amber-50 dark:hover:bg-gray-700 hover:text-amber-600 dark:hover:text-amber-400 flex items-center gap-2 last:rounded-b-lg"
+        class="theme-option w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-amber-50 dark:hover:bg-gray-700 hover:text-amber-600 dark:hover:text-amber-400 flex items-center gap-2 last:rounded-b-lg"
         role="menuitem"
       >
         <svg
@@ -160,7 +155,7 @@
     return "system";
   }
 
-  function updateUI(theme: Theme) {
+  function updateAllUI(theme: Theme) {
     const effectiveTheme = theme === "system" ? getSystemTheme() : theme;
 
     // Update HTML class
@@ -170,107 +165,109 @@
       document.documentElement.classList.remove("dark");
     }
 
-    // Update Button Icon
-    const iconLight = document.getElementById("icon-light");
-    const iconDark = document.getElementById("icon-dark");
-    const iconSystem = document.getElementById("icon-system");
+    // Update all instances
+    const components = document.querySelectorAll(".theme-toggle-component");
+    components.forEach((component) => {
+      const iconLight = component.querySelector(".theme-icon-light");
+      const iconDark = component.querySelector(".theme-icon-dark");
+      const iconSystem = component.querySelector(".theme-icon-system");
 
-    // Hide all first
-    iconLight?.classList.add("hidden");
-    iconDark?.classList.add("hidden");
-    iconSystem?.classList.add("hidden");
+      // Hide all first
+      iconLight?.classList.add("hidden");
+      iconDark?.classList.add("hidden");
+      iconSystem?.classList.add("hidden");
 
-    // Show appropriate icon based on SELECTED theme (not effective theme)
-    if (theme === "light") {
-      iconLight?.classList.remove("hidden");
-    } else if (theme === "dark") {
-      iconDark?.classList.remove("hidden");
-    } else {
-      iconSystem?.classList.remove("hidden");
-    }
-
-    // Update active state in menu
-    const menuItems = document.querySelectorAll("[data-theme]");
-    menuItems.forEach((item) => {
-      if (item.getAttribute("data-theme") === theme) {
-        item.classList.add(
-          "bg-amber-50",
-          "dark:bg-gray-700",
-          "text-amber-600",
-          "dark:text-amber-400",
-        );
+      // Show appropriate icon based on SELECTED theme
+      if (theme === "light") {
+        iconLight?.classList.remove("hidden");
+      } else if (theme === "dark") {
+        iconDark?.classList.remove("hidden");
       } else {
-        item.classList.remove(
-          "bg-amber-50",
-          "dark:bg-gray-700",
-          "text-amber-600",
-          "dark:text-amber-400",
-        );
+        iconSystem?.classList.remove("hidden");
       }
+
+      // Update active state in menu
+      const menuItems = component.querySelectorAll("[data-theme]");
+      menuItems.forEach((item) => {
+        if (item.getAttribute("data-theme") === theme) {
+          item.classList.add(
+            "bg-amber-50",
+            "dark:bg-gray-700",
+            "text-amber-600",
+            "dark:text-amber-400",
+          );
+        } else {
+          item.classList.remove(
+            "bg-amber-50",
+            "dark:bg-gray-700",
+            "text-amber-600",
+            "dark:text-amber-400",
+          );
+        }
+      });
     });
   }
 
   function setTheme(theme: Theme) {
     localStorage.setItem(STORAGE_KEY, theme);
-    updateUI(theme);
+    updateAllUI(theme);
   }
 
   // Initialize
   const initialTheme = getStoredTheme();
-  updateUI(initialTheme);
+  updateAllUI(initialTheme);
 
-  // Event Listeners
-  const buttons = document.querySelectorAll("[data-theme]");
-  buttons.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const theme = btn.getAttribute("data-theme") as Theme;
-      setTheme(theme);
+  // Set up all instances
+  const components = document.querySelectorAll(".theme-toggle-component");
+  components.forEach((component) => {
+    const toggleBtn = component.querySelector(".theme-toggle-btn");
+    const menu = component.querySelector(".theme-menu");
+    const buttons = component.querySelectorAll("[data-theme]");
+
+    // Event Listeners for theme options
+    buttons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const theme = btn.getAttribute("data-theme") as Theme;
+        setTheme(theme);
+      });
     });
+
+    // Toggle Menu on Click
+    if (toggleBtn && menu) {
+      toggleBtn.addEventListener("click", (e) => {
+        const isExpanded = toggleBtn.getAttribute("aria-expanded") === "true";
+        toggleBtn.setAttribute("aria-expanded", (!isExpanded).toString());
+
+        if (!isExpanded) {
+          menu.classList.remove("invisible", "opacity-0");
+          menu.classList.add("visible", "opacity-100");
+        } else {
+          menu.classList.add("invisible", "opacity-0");
+          menu.classList.remove("visible", "opacity-100");
+        }
+        e.stopPropagation();
+      });
+
+      // Close on click outside
+      document.addEventListener("click", (e) => {
+        if (
+          !toggleBtn.contains(e.target as Node) &&
+          !menu.contains(e.target as Node)
+        ) {
+          toggleBtn.setAttribute("aria-expanded", "false");
+          menu.classList.add("invisible", "opacity-0");
+          menu.classList.remove("visible", "opacity-100");
+        }
+      });
+    }
   });
-
-  // Toggle Menu on Mobile/Click (optional, since we use group-hover for desktop)
-  const toggleBtn = document.getElementById("theme-toggle-btn");
-  const menu = document.getElementById("theme-menu");
-
-  if (toggleBtn && menu) {
-    toggleBtn.addEventListener("click", (e) => {
-      // Only toggle on click if not using hover (e.g. mobile)
-      // But for simplicity, we can just let hover handle desktop
-      // and click handle mobile.
-      // However, the CSS is group-hover, which works on hover.
-      // For click support (mobile), we might need to toggle a class.
-      const isExpanded = toggleBtn.getAttribute("aria-expanded") === "true";
-      toggleBtn.setAttribute("aria-expanded", (!isExpanded).toString());
-
-      if (!isExpanded) {
-        menu.classList.remove("invisible", "opacity-0");
-        menu.classList.add("visible", "opacity-100");
-      } else {
-        menu.classList.add("invisible", "opacity-0");
-        menu.classList.remove("visible", "opacity-100");
-      }
-      e.stopPropagation();
-    });
-
-    // Close on click outside
-    document.addEventListener("click", (e) => {
-      if (
-        !toggleBtn.contains(e.target as Node) &&
-        !menu.contains(e.target as Node)
-      ) {
-        toggleBtn.setAttribute("aria-expanded", "false");
-        menu.classList.add("invisible", "opacity-0");
-        menu.classList.remove("visible", "opacity-100");
-      }
-    });
-  }
 
   // Listen for system changes
   window
     .matchMedia("(prefers-color-scheme: dark)")
     .addEventListener("change", () => {
       if (getStoredTheme() === "system") {
-        updateUI("system");
+        updateAllUI("system");
       }
     });
 </script>

@@ -3,9 +3,8 @@
 ---
 
 <button
-  id="font-size-toggle"
   type="button"
-  class="text-gray-700 dark:text-gray-200 hover:text-amber-600 dark:hover:text-amber-400 focus:outline-none transition-colors p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
+  class="font-size-toggle text-gray-700 dark:text-gray-200 hover:text-amber-600 dark:hover:text-amber-400 focus:outline-none transition-colors p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
   aria-label="Change font size"
   title="Change font size"
 >
@@ -33,13 +32,13 @@
     return SIZES[nextIndex];
   }
 
-  const toggle = document.getElementById("font-size-toggle");
+  const toggles = document.querySelectorAll(".font-size-toggle");
 
-  if (toggle) {
+  toggles.forEach((toggle) => {
     toggle.addEventListener("click", () => {
       const currentSize = document.documentElement.style.fontSize || "100%";
       const nextSize = getNextSize(currentSize);
       setFontSize(nextSize);
     });
-  }
+  });
 </script>
