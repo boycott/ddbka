@@ -3,6 +3,7 @@ import "../styles/global.css";
 import Analytics from "@vercel/analytics/astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import Logo from "../assets/logo.avif";
 
 interface Props {
   title: string;
@@ -14,12 +15,11 @@ interface Props {
 const {
   title,
   description = "Dover & District Beekeepers' Association - Supporting beekeepers in South East Kent since 1939.",
-  image = "/og-image.png", // Default image (we might need to create this or use the logo/bee image)
+  image = Logo.src,
   type = "website",
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const socialImageURL = new URL(image, Astro.url);
 ---
 
 <!doctype html>
@@ -38,14 +38,15 @@ const socialImageURL = new URL(image, Astro.url);
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={socialImageURL} />
+    <meta property="og:image" content={image} />
+    <meta property="og:site_name" content="Dover and District Beekeepers' Association">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content={canonicalURL} />
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
-    <meta property="twitter:image" content={socialImageURL} />
+    <meta property="twitter:image" content={image} />
 
     <!-- Inline theme script to prevent flash -->
     <script is:inline>
