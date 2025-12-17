@@ -14,11 +14,12 @@ const newsCollection = defineCollection({
 
 const meetingsCollection = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './collections/meetings' }),
-  schema: z.object({
+  schema: ({ image }) => z.object({
     title: z.string(),
     date: z.date(),
     location: z.string(),
-    time: z.string().optional()
+    time: z.string().optional(),
+    gallery: z.array(image()).optional()
   })
 });
 
