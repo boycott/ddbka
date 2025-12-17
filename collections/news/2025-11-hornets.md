@@ -19,13 +19,13 @@ There has been much hard work from our neighbours -Ashford, Canterbury, Thanet. 
 
 **DDBKA** - Q numbers are not doubling, increased monitoring & more public engagement are paying off, BUT 5 nests found after September 20th.
 
-## CONCLUSION
+## Conclusion
 
 The meeting voted overwhelmingly to support a commitment to 2026 trapping for 3 or 2 [min] weeks. Wind direction influences likelihood of a catch, hornets need to smell Trappit.
 
 ## Allocations for 2026
 
-March to June -Spring trapping in homes & gardens
-August to September- use the grids from previous years.
-Expand the work of AHATS
-February meeting – Training on using different methods
+- March to June -Spring trapping in homes & gardens
+- August to September- use the grids from previous years.
+- Expand the work of AHATS
+- February meeting – Training on using different methods
