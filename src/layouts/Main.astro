@@ -2,6 +2,7 @@
 import "../styles/global.css";
 import Analytics from "@vercel/analytics/astro";
 import Header from "../components/Header.astro";
+import Banner from "../components/Banner.astro";
 import Footer from "../components/Footer.astro";
 import Logo from "../assets/logo.avif";
 
@@ -20,6 +21,7 @@ const {
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const canonicalImage = new URL(image, Astro.url);
 ---
 
 <!doctype html>
@@ -38,7 +40,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={image} />
+    <meta property="og:image" content={canonicalImage} />
     <meta property="og:site_name" content="Dover and District Beekeepers' Association">
 
     <!-- Twitter -->
@@ -46,7 +48,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta property="twitter:url" content={canonicalURL} />
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
-    <meta property="twitter:image" content={image} />
+    <meta property="twitter:image" content={canonicalImage} />
 
     <!-- Inline theme script to prevent flash -->
     <script is:inline>
@@ -87,6 +89,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     class="flex flex-col min-h-full bg-orange-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans transition-colors"
   >
     <Header />
+    <Banner />
     <main class="flex-grow container mx-auto px-4 py-8">
       <slot />
     </main>

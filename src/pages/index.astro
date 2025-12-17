@@ -112,11 +112,8 @@ const formatDate = (date: Date) => {
 					<p class="font-semibold text-gray-800 dark:text-gray-100 mb-2">
 						{latestNews.data.title}
 					</p>
-					<p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">
-						{latestNews.data.description}
-					</p>
 					<a
-						href={`/news/${latestNews.slug}`}
+						href={`/news/${latestNews.id}`}
 						class="text-amber-600 dark:text-amber-500 font-semibold hover:underline"
 					>
 						Read more &rarr;
@@ -139,11 +136,8 @@ const formatDate = (date: Date) => {
 					<p class="font-semibold text-gray-800 dark:text-gray-100 mb-2">
 						{latestPastMeeting.data.title}
 					</p>
-					<p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">
-						{latestPastMeeting.data.description}
-					</p>
 					<a
-						href={`/meetings/${latestPastMeeting.slug}`}
+						href={`/meetings/${latestPastMeeting.id}`}
 						class="text-amber-600 dark:text-amber-500 font-semibold hover:underline"
 					>
 						View details &rarr;
@@ -164,11 +158,8 @@ const formatDate = (date: Date) => {
 					<p class="font-semibold text-gray-800 dark:text-gray-100 mb-2">
 						{nextMeeting.data.title}
 					</p>
-					<p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">
-						{nextMeeting.data.description}
-					</p>
 					<a
-						href={`/meetings/${nextMeeting.slug}`}
+						href={`/meetings/${nextMeeting.id}`}
 						class="text-amber-600 dark:text-amber-500 font-semibold hover:underline"
 					>
 						View details &rarr;

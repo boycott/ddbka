@@ -1,0 +1,24 @@
+---
+import { getCollection } from "astro:content";
+
+const today = new Date();
+today.setHours(0, 0, 0, 0);
+
+const announcements = await getCollection("announcements", ({ data }) => {
+  return data.from <= today && data.to >= today;
+});
+---
+
+{
+  announcements.map((announcement) => (
+    <div class="bg-amber-200 text-yellow-900 border-b border-yellow-300 p-2 text-center font-medium">
+      {announcement.data.link ? (
+        <a href={announcement.data.link} class="hover:underline">
+          {announcement.data.title}
+        </a>
+      ) : (
+        <span>{announcement.data.title}</span>
+      )}
+    </div>
+  ))
+}

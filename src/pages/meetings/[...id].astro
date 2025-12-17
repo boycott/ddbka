@@ -1,11 +1,11 @@
 ---
-import { getCollection, type CollectionEntry } from "astro:content";
+import { getCollection, type CollectionEntry, render } from "astro:content";
 import Layout from "../../layouts/Main.astro";
 
 export async function getStaticPaths() {
   const meetings = await getCollection("meetings");
   return meetings.map((meeting) => ({
-    params: { slug: meeting.slug },
+    params: { id: meeting.id },
     props: { meeting },
   }));
 }
@@ -15,18 +15,16 @@ type Props = {
 };
 
 const { meeting } = Astro.props as Props;
-const { Content } = await meeting.render();
+const { Content } = await render(meeting);
 ---
 
-<Layout
-  title={`${meeting.data.title} - DDBKA Meetings`}
-  description={meeting.data.description}
-  type="article"
->
+<Layout title={`${meeting.data.title} - DDBKA Meetings`} type="article">
   <article
     class="max-w-3xl mx-auto bg-white dark:bg-gray-800 p-8 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700"
   >
-    <header class="mb-8 border-b border-gray-100 dark:border-gray-700 pb-8">
+    <header
+      class="flex gap-8 border-b border-gray-100 dark:border-gray-700 mb-4"
+    >
       <!-- Date Badge -->
       <div class="mb-6">
         <div
@@ -44,23 +42,25 @@ const { Content } = await meeting.render();
         </div>
       </div>
 
-      <h1 class="text-4xl font-bold text-amber-600 mb-4">
-        {meeting.data.title}
-      </h1>
+      <div>
+        <h1 class="text-4xl font-bold text-amber-600 mb-4">
+          {meeting.data.title}
+        </h1>
 
-      <div class="flex flex-wrap gap-4 text-gray-600 dark:text-gray-300">
-        <div class="flex items-center gap-2">
-          <span class="text-xl">📍</span>
-          <span class="font-semibold">{meeting.data.location}</span>
+        <div class="flex flex-wrap gap-4 text-gray-600 dark:text-gray-300">
+          <div class="flex items-center gap-2">
+            <span class="text-xl">📍</span>
+            <span class="font-semibold">{meeting.data.location}</span>
+          </div>
+          {
+            meeting.data.time && (
+              <div class="flex items-center gap-2">
+                <span class="text-xl">🕐</span>
+                <span class="font-semibold">{meeting.data.time}</span>
+              </div>
+            )
+          }
         </div>
-        {
-          meeting.data.time && (
-            <div class="flex items-center gap-2">
-              <span class="text-xl">🕐</span>
-              <span class="font-semibold">{meeting.data.time}</span>
-            </div>
-          )
-        }
       </div>
     </header>
 
@@ -68,9 +68,9 @@ const { Content } = await meeting.render();
       <Content />
     </div>
 
-    <footer class="mt-12 pt-8 border-t border-gray-100 dark:border-gray-700">
+    <footer class="mt-8 pt-8 border-t border-gray-100 dark:border-gray-700">
       <a href="/meetings" class="text-amber-600 font-semibold hover:underline">
-        ← Back to Meetings
+        ← All Meetings
       </a>
     </footer>
   </article>

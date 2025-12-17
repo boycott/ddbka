@@ -1,11 +1,11 @@
 ---
-import { getCollection, type CollectionEntry } from "astro:content";
+import { getCollection, type CollectionEntry, render } from "astro:content";
 import Layout from "../../layouts/Main.astro";
 
 export async function getStaticPaths() {
   const posts = await getCollection("news");
-  return posts.map((post) => ({
-    params: { slug: post.slug },
+  return posts.map(post => ({
+    params: { id: post.id },
     props: { post },
   }));
 }
@@ -15,12 +15,11 @@ type Props = {
 };
 
 const { post } = Astro.props as Props;
-const { Content } = await post.render();
+const { Content } = await render(post);
 ---
 
 <Layout
   title={`${post.data.title} - DDBKA News`}
-  description={post.data.description}
   type="article"
 >
   <article
@@ -64,7 +63,7 @@ const { Content } = await post.render();
 
     <footer class="mt-12 pt-8 border-t border-gray-100 dark:border-gray-700">
       <a href="/news" class="text-amber-600 font-semibold hover:underline">
-        &larr; Back to News
+        &larr; All News
       </a>
     </footer>
   </article>
