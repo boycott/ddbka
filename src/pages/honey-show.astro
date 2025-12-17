@@ -1,0 +1,86 @@
+---
+import Layout from "../layouts/Main.astro";
+import HoneyImage from "../assets/IMG_6794.jpg"; // Using existing image as placeholder
+---
+
+<Layout
+  title="The Honey Show - Dover & District Beekeepers' Association"
+  description="Information about our annual Honey Show, competitions, and displays."
+>
+  <div class="max-w-4xl mx-auto">
+    <!-- Page Header -->
+    <div class="mb-12">
+      <h1 class="text-4xl md:text-5xl font-bold text-amber-600 mb-8">
+        Annual Honey Show
+      </h1>
+      <p class="text-xl text-gray-700 dark:text-gray-200 leading-relaxed">
+        Our annual celebration of beekeeping excellence. The Honey Show is a
+        chance for members to showcase their hive products, from honey and wax
+        to cakes and photography.
+      </p>
+    </div>
+
+    <!-- Featured Image -->
+    <div class="mb-12">
+      <img
+        src={HoneyImage.src}
+        alt="Honey show display"
+        class="w-full h-auto rounded-2xl shadow-xl"
+      />
+    </div>
+
+    <!-- Content Sections -->
+    <div class="space-y-12">
+      <section
+        class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700"
+      >
+        <h2 class="text-2xl font-bold text-amber-600 mb-4">About the Show</h2>
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+          The Honey Show is the highlight of our beekeeping year. It's a
+          friendly competition where members enter their products into various
+          classes to be judged by certified honey judges.
+        </p>
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+          It's not just about winning; it's about maintaining high standards in
+          preparing and presenting honey and beeswax products.
+        </p>
+      </section>
+
+      <section
+        class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700"
+      >
+        <h2 class="text-2xl font-bold text-amber-600 mb-4">Classes</h2>
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+          There are classes for everyone, from novices to experienced
+          beekeepers:
+        </p>
+        <ul class="space-y-2 ml-6 text-gray-700 dark:text-gray-300">
+          <li class="flex items-start">
+            <span class="text-amber-600 mr-2">•</span>
+            <span>Run Honey (Light, Medium, Dark)</span>
+          </li>
+          <li class="flex items-start">
+            <span class="text-amber-600 mr-2">•</span>
+            <span>Set Honey (Creamed, Naturally Granulated)</span>
+          </li>
+          <li class="flex items-start">
+            <span class="text-amber-600 mr-2">•</span>
+            <span>Cut Comb & Sections</span>
+          </li>
+          <li class="flex items-start">
+            <span class="text-amber-600 mr-2">•</span>
+            <span>Beeswax (Blocks, Candles, Models)</span>
+          </li>
+          <li class="flex items-start">
+            <span class="text-amber-600 mr-2">•</span>
+            <span>Mead & Honey Cakes</span>
+          </li>
+          <li class="flex items-start">
+            <span class="text-amber-600 mr-2">•</span>
+            <span>Photography & Crafts</span>
+          </li>
+        </ul>
+      </section>
+    </div>
+  </div>
+</Layout>

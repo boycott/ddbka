@@ -1,0 +1,26 @@
+---
+import Layout from "../layouts/Main.astro";
+import Gallery from "../components/Gallery.astro";
+
+import G1 from "../assets/JTEX4065_JPG.avif";
+
+const gallery = [G1];
+---
+
+<Layout
+  title="Local Honey - Dover & District Beekeepers' Association"
+  description="Discover the benefits of local honey and find out where to buy pure, raw honey from our members."
+>
+  <div class="max-w-4xl mx-auto">
+    <!-- Page Header -->
+    <div class="mb-12">
+      <h1 class="text-4xl md:text-5xl font-bold text-amber-600 mb-8">
+        Our Apiary
+      </h1>
+      <p class="text-xl text-gray-700 dark:text-gray-200 leading-relaxed">
+        We hold our summer meetings at the Apiary and welcome volunteers throughout the year to help with inspections seasonal jobs and maintenence.
+      </p>
+    </div>
+    <Gallery images={gallery} title="Gallery" />
+  </div>
+</Layout>

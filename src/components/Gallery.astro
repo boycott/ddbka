@@ -126,7 +126,7 @@ const { images, title = "Gallery" } = Astro.props;
     <div
       class="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/90 bg-black/40 backdrop-blur-md px-4 py-2 rounded-full font-medium text-sm tracking-wide"
     >
-      <span id="lightbox-current">1</span> / <span id="lightbox-total">1</span>
+      <span id="lightbox-current">1</span> / <span id="lightbox-total">{ images.length }</span>
     </div>
   </div>
 </dialog>
@@ -144,15 +144,11 @@ const { images, title = "Gallery" } = Astro.props;
     const prevBtn = document.getElementById("lightbox-prev");
     const nextBtn = document.getElementById("lightbox-next");
     const currentSpan = document.getElementById("lightbox-current");
-    const totalSpan = document.getElementById("lightbox-total");
     const triggers = document.querySelectorAll(".gallery-trigger");
 
     let currentIndex = 0;
     let touchStartX = 0;
     let touchEndX = 0;
-
-    // Initialize total count
-    if (totalSpan) totalSpan.textContent = galleryImages.length;
 
     function updateImage(index) {
       if (!imgElement || index < 0 || index >= galleryImages.length) return;

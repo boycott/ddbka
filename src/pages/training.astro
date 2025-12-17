@@ -1,0 +1,101 @@
+---
+import Layout from "../layouts/Main.astro";
+import TrainingImage from "../assets/KVOM0611.avif"; // Using existing image as placeholder
+---
+
+<Layout
+  title="Training - Dover & District Beekeepers' Association"
+  description="Learn beekeeping with our training courses, from beginner introductions to advanced techniques."
+>
+  <div class="max-w-4xl mx-auto">
+    <!-- Page Header -->
+    <div class="mb-12">
+      <h1 class="text-4xl md:text-5xl font-bold text-amber-600 mb-8">
+        Beekeeper Training
+      </h1>
+      <p class="text-xl text-gray-700 dark:text-gray-200 leading-relaxed">
+        We offer a range of training opportunities for both aspiring beekeepers
+        and experienced members looking to improve their skills.
+      </p>
+    </div>
+
+    <!-- Featured Image -->
+    <div class="mb-12">
+      <img
+        src={TrainingImage.src}
+        alt="Beekeeping training session"
+        class="w-full h-auto rounded-2xl shadow-xl"
+      />
+    </div>
+
+    <!-- Content Sections -->
+    <div class="space-y-12">
+      <section
+        class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700"
+      >
+        <h2 class="text-2xl font-bold text-amber-600 mb-4">
+          Introduction to Beekeeping
+        </h2>
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+          Curious about keeping bees? Our introductory courses are designed to
+          give you a taste of what's involved before you commit to buying
+          equipment and bees.
+        </p>
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+          We cover the basics of hive management, the beekeeping year, and the
+          equipment you'll need to get started.
+        </p>
+      </section>
+
+      <section
+        class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700"
+      >
+        <h2 class="text-2xl font-bold text-amber-600 mb-4">
+          Improvers & Advanced Skills
+        </h2>
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+          For those who have already started their beekeeping journey, we offer
+          sessions on more advanced topics such as:
+        </p>
+        <ul class="space-y-2 ml-6 text-gray-700 dark:text-gray-300">
+          <li class="flex items-start">
+            <span class="text-amber-600 mr-2">•</span>
+            <span>Queen Rearing</span>
+          </li>
+          <li class="flex items-start">
+            <span class="text-amber-600 mr-2">•</span>
+            <span>Swarm Control</span>
+          </li>
+          <li class="flex items-start">
+            <span class="text-amber-600 mr-2">•</span>
+            <span>Disease Recognition and Management</span>
+          </li>
+          <li class="flex items-start">
+            <span class="text-amber-600 mr-2">•</span>
+            <span>Honey Processing</span>
+          </li>
+        </ul>
+      </section>
+
+      <section
+        class="bg-amber-50 dark:bg-gray-800 p-8 rounded-xl shadow-sm border border-amber-100 dark:border-gray-700"
+      >
+        <h2 class="text-2xl font-bold text-amber-600 mb-4">Exam Preparation</h2>
+        <div class="text-gray-700 dark:text-gray-300 leading-relaxed space-y-4">
+          <p>
+            We adhere to the BBKA examination syllabus and run study groups for
+            members wishing to take their modules and practical assessments.
+          </p>
+          <div class="mt-6">
+            <a
+              href="/contact"
+              class="inline-block px-8 py-3 bg-amber-600 text-white font-semibold rounded-lg shadow-md hover:bg-amber-700 transition-colors"
+            >
+              Contact Us
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</Layout>

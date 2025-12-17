@@ -2,7 +2,6 @@
 title: "Agreement on Yellow-Legged Hornet activity for 2026"
 pubDate: 2025-11-29
 author: "Geoff"
-tags: ["website", "announcement"]
 ---
 
 In terms of preparation for 2026 we want to make sure of what members agreed at the AGM for future activity of DDBKA in the continuing battle we have with the Yellow-Legged Hornet.
