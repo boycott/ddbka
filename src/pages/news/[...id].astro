@@ -4,7 +4,7 @@ import Layout from "../../layouts/Main.astro";
 
 export async function getStaticPaths() {
   const posts = await getCollection("news");
-  return posts.map(post => ({
+  return posts.map((post) => ({
     params: { id: post.id },
     props: { post },
   }));
@@ -18,12 +18,9 @@ const { post } = Astro.props as Props;
 const { Content } = await render(post);
 ---
 
-<Layout
-  title={`${post.data.title} - DDBKA News`}
-  type="article"
->
+<Layout title={`${post.data.title} - DDBKA News`} type="article">
   <article
-    class="max-w-3xl mx-auto bg-white dark:bg-gray-800 p-8 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700"
+    class="max-w-6xl mx-auto bg-white dark:bg-gray-800 p-8 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700"
   >
     <header class="mb-8 border-b border-gray-100 dark:border-gray-700 pb-8">
       <div

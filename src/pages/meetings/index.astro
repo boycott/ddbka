@@ -4,7 +4,7 @@ import { getCollection } from "astro:content";
 
 const allMeetings = await getCollection("meetings");
 const meetings = allMeetings.sort(
-  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+  (a, b) => a.data.date.valueOf() - b.data.date.valueOf(),
 );
 
 const now = new Date();
@@ -16,7 +16,7 @@ const pastMeetings = meetings.filter((m) => m.data.date < now);
   title="Meetings - Dover & District Beekeepers' Association"
   description="Join our monthly meetings at Alkham Village Hall or our Club Apiary. Check the schedule for upcoming events."
 >
-  <div class="max-w-4xl mx-auto">
+  <div class="max-w-6xl mx-auto">
     <!-- Page Header -->
     <div class="mb-12">
       <h1 class="text-4xl md:text-5xl font-bold text-amber-600 mb-6">
@@ -79,7 +79,8 @@ const pastMeetings = meetings.filter((m) => m.data.date < now);
                       )}
                     </div>
 
-                    <a href={`/meetings/${meeting.id}`}
+                    <a
+                      href={`/meetings/${meeting.id}`}
                       class="text-amber-600 font-semibold hover:underline"
                     >
                       Read more →
