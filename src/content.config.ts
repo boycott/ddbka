@@ -12,6 +12,17 @@ const newsCollection = defineCollection({
   })
 });
 
+const eventsCollection = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './collections/events' }),
+  schema: ({ image }) => z.object({
+    title: z.string(),
+    date: z.date(),
+    location: z.string(),
+    time: z.string().optional(),
+    gallery: z.array(image()).optional()
+  })
+});
+
 const meetingsCollection = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './collections/meetings' }),
   schema: ({ image }) => z.object({
@@ -34,7 +45,8 @@ const announcementCollection = defineCollection({
 });
 
 export const collections = {
-  'news': newsCollection,
-  'meetings': meetingsCollection,
-  'announcements': announcementCollection,
+  news: newsCollection,
+  events: eventsCollection,
+  meetings: meetingsCollection,
+  announcements: announcementCollection,
 };

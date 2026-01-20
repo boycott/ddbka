@@ -4,24 +4,25 @@ import ThemeToggle from "./ThemeToggle.astro";
 import FontSizeToggle from "./FontSizeToggle.astro";
 
 const navItems = [
-  { href: "/about", label: "The Association" },
-  { href: "/membership", label: "Membership" },
   { href: "/news", label: "News" },
+  { href: "/contact", label: "Contact Us" },
+];
+
+const aboutUsItems = [
+  { href: "/about", label: "The Association" },
+  { href: "/apiary", label: "Apiary" },
+  { href: "/membership", label: "Membership" },
+  { href: "/training", label: "Training" },
+  { href: "/honey-show", label: "Annual honey show" },
+  { href: "/committee", label: "Committee" },
 ];
 
 const resourcesItems = [
   { href: "/swarms", label: "Swarms" },
-  { href: "/apiary", label: "Apiary" },
-  { href: "/honey-show", label: "Annual Honey Show" },
-  { href: "/hornets", label: "Yellow-Legged Asian Hornets" },
-  { href: "/honey", label: "Local Honey" },
-];
-
-const aboutUsItems = [
+  { href: "/hornets", label: "Yellow-legged Asian Hornets" },
+  { href: "/honey", label: "Local honey" },
   { href: "/meetings", label: "Meetings" },
-  { href: "/training", label: "Training" },
-  { href: "/contact", label: "Contact Us" },
-  { href: "/committee", label: "Committee" },
+  { href: "/events", label: "Upcoming events" },
 ];
 ---
 
@@ -40,18 +41,6 @@ const aboutUsItems = [
     <!-- Desktop Nav -->
     <nav class="hidden md:flex items-center gap-6">
       <ul class="flex space-x-6">
-        {
-          navItems.map((item) => (
-            <li>
-              <a
-                href={item.href}
-                class="text-gray-700 dark:text-gray-200 hover:text-yellow-600 dark:hover:text-yellow-400 font-medium transition-colors"
-              >
-                {item.label}
-              </a>
-            </li>
-          ))
-        }
         <!-- Resources Dropdown -->
         <li class="relative group">
           <button
@@ -138,6 +127,18 @@ const aboutUsItems = [
             }
           </ul>
         </li>
+        {
+          navItems.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                class="text-gray-700 dark:text-gray-200 hover:text-yellow-600 dark:hover:text-yellow-400 font-medium transition-colors"
+              >
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
       </ul>
       <div class="flex items-center gap-2">
         <FontSizeToggle />
@@ -177,18 +178,6 @@ const aboutUsItems = [
     class="hidden md:hidden bg-white dark:bg-gray-800 border-t border-gray-100 dark:border-gray-700"
   >
     <ul class="flex flex-col py-2">
-      {
-        navItems.map((item) => (
-          <li>
-            <a
-              href={item.href}
-              class="block px-4 py-3 text-gray-700 dark:text-gray-200 hover:bg-amber-50 dark:hover:bg-amber-900 hover:text-amber-600 dark:hover:text-amber-400 font-medium transition-colors"
-            >
-              {item.label}
-            </a>
-          </li>
-        ))
-      }
       <!-- Resources Section for Mobile -->
       <li>
         <button
@@ -269,6 +258,18 @@ const aboutUsItems = [
           }
         </ul>
       </li>
+      {
+        navItems.map((item) => (
+          <li>
+            <a
+              href={item.href}
+              class="block px-4 py-3 text-gray-700 dark:text-gray-200 hover:bg-amber-50 dark:hover:bg-amber-900 hover:text-amber-600 dark:hover:text-amber-400 font-medium transition-colors"
+            >
+              {item.label}
+            </a>
+          </li>
+        ))
+      }
     </ul>
   </nav>
 </header>
