@@ -74,14 +74,23 @@ import Layout from "../layouts/Main.astro";
             >
               Subject <span class="text-red-500">*</span>
             </label>
-            <input
-              type="text"
+            <select
               id="subject"
               name="subject"
               required
               class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition-colors dark:bg-gray-700 dark:text-gray-100"
-              placeholder="General Enquiry"
-            />
+            >
+              <option value="">Select a subject</option>
+              <option value="Training">Training</option>
+              <option value="Hornets">Hornets</option>
+              <option value="Equipment">Borrowing equipment</option>
+              <option value="Finance">Payments / Finance</option>
+              <option value="Honey">Honey</option>
+              <option value="Show">Honey show</option>
+              <option value="Apiary">Apiary</option>
+              <option value="Swarms">Swarms</option>
+              <option value="General">Other</option>
+            </select>
           </div>
 
           <div>
