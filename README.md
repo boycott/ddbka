@@ -190,4 +190,4 @@ When adding new content or features:
 
 ## 📧 Contact
 
-For questions about the website, contact the DDBKA Committee at [doveranddistrictbeekeepers@gmail.com](mailto:doveranddistrictbeekeepers@gmail.com)
+For questions about the website, contact the DDBKA Committee at [enquiries@ddbka.co.uk](mailto:enquiries@ddbka.co.uk)
