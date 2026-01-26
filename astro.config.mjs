@@ -7,9 +7,11 @@ import vercel from '@astrojs/vercel';
 
 import sitemap from '@astrojs/sitemap';
 
+const site = "https://ddbka.co.uk";
+
 // https://astro.build/config
 export default defineConfig({
-  site: "https://www.ddbka.co.uk",
+  site,
   output: "static",
 
   vite: {
@@ -22,5 +24,8 @@ export default defineConfig({
     }
   }),
 
-  integrations: [sitemap()]
+  integrations: [sitemap({
+    filter: (page) => page === new URL('/', site).toString()
+    // filter: (page) => page !== new URL('/404/', site).toString()
+  })]
 });
