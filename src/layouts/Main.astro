@@ -94,23 +94,7 @@ const canonicalImage = new URL(image, Astro.url);
   <body
     class="flex flex-col min-h-full bg-orange-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans transition-colors"
   >
-    {
-      noHeader ? (
-        <header class="bg-white dark:bg-gray-800 shadow-md sticky top-0 z-50 transition-colors">
-          <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <a href="/" class="flex items-center gap-2 group">
-              <img
-                src={Logo.src}
-                alt="Dover & District Beekeepers' Association"
-                class="h-28 w-auto transition-transform group-hover:scale-105"
-              />
-            </a>
-          </div>
-        </header>
-      ) : (
-        <Header />
-      )
-    }
+    <Header noHeader />
     <Banner />
     <main class="flex-grow container mx-auto px-4 py-8">
       <slot />
