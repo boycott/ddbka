@@ -4,17 +4,20 @@ import { Image } from "astro:assets";
 type Props = {
   images: ImageMetadata[];
   title?: string;
+  padding?: string;
 };
 
-const { images, title = "Gallery" } = Astro.props;
+const { images, title, padding = "mb-12" } = Astro.props;
 ---
 
 {
   images && images.length > 0 && (
-    <div class="mt-12 not-prose">
-      <h2 class="text-2xl font-bold text-amber-600 dark:text-amber-500 mb-6">
-        {title}
-      </h2>
+    <div class={padding + " not-prose"}>
+      {title && (
+        <h2 class="text-2xl font-bold text-amber-600 dark:text-amber-500 mb-6">
+          {title}
+        </h2>
+      )}
       <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
         {images.map((image, index) => (
           <button
@@ -126,7 +129,9 @@ const { images, title = "Gallery" } = Astro.props;
     <div
       class="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/90 bg-black/40 backdrop-blur-md px-4 py-2 rounded-full font-medium text-sm tracking-wide"
     >
-      <span id="lightbox-current">1</span> / <span id="lightbox-total">{ images.length }</span>
+      <span id="lightbox-current">1</span> / <span id="lightbox-total"
+        >{images.length}</span
+      >
     </div>
   </div>
 </dialog>

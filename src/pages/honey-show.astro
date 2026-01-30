@@ -1,6 +1,13 @@
 ---
 import Layout from "../layouts/Main.astro";
-import HoneyImage from "../assets/IMG_6794.jpg"; // Using existing image as placeholder
+import Gallery from "../components/Gallery.astro";
+
+import Honey1 from "../assets/2025-honey-show/IMG_3856.jpg";
+import Honey2 from "../assets/2025-honey-show/IMG_3858.jpg";
+import Honey3 from "../assets/2025-honey-show/IMG_3861.jpg";
+import Honey4 from "../assets/2025-honey-show/IMG_3863.jpg";
+import Honey5 from "../assets/2025-honey-show/IMG_3864.jpg";
+import Honey6 from "../assets/2025-honey-show/IMG_3865.jpg";
 ---
 
 <Layout
@@ -21,13 +28,7 @@ import HoneyImage from "../assets/IMG_6794.jpg"; // Using existing image as plac
     </div>
 
     <!-- Featured Image -->
-    <div class="mb-12">
-      <img
-        src={HoneyImage.src}
-        alt="Honey show display"
-        class="w-full h-auto rounded-2xl shadow-xl"
-      />
-    </div>
+    <Gallery images={[Honey1, Honey2, Honey3, Honey4, Honey5, Honey6]} />
 
     <!-- Content Sections -->
     <div class="space-y-12">

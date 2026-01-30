@@ -94,7 +94,7 @@ const canonicalImage = new URL(image, Astro.url);
   <body
     class="flex flex-col min-h-full bg-orange-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans transition-colors"
   >
-    <Header noHeader />
+    <Header noHeader={noHeader} />
     <Banner />
     <main class="flex-grow container mx-auto px-4 py-8">
       <slot />
