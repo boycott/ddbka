@@ -2,6 +2,7 @@
 import Layout from "../layouts/Main.astro";
 import bee from "../assets/bee.avif";
 import { getCollection } from "astro:content";
+import { getUpcoming, getPast } from "../lib/meetings";
 
 // Get the most recent news article
 const allNews = await getCollection("news");
@@ -10,21 +11,11 @@ const sortedNews = allNews.sort(
 );
 const latestNews = sortedNews[0];
 
-// Get meetings
-const allMeetings = await getCollection("meetings");
-const now = new Date();
-
 // Get the most recent past meeting
-const pastMeetings = allMeetings
-	.filter((meeting) => meeting.data.date < now)
-	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
-const latestPastMeeting = pastMeetings[0];
+const latestPastMeeting = (await getPast(1))[0];
 
 // Get the next upcoming meeting
-const upcomingMeetings = allMeetings
-	.filter((meeting) => meeting.data.date >= now)
-	.sort((a, b) => a.data.date.valueOf() - b.data.date.valueOf());
-const nextMeeting = upcomingMeetings[0];
+const nextMeeting = (await getUpcoming(1))[0];
 
 // Format date helper
 const formatDate = (date: Date) => {
