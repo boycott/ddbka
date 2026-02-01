@@ -2,11 +2,10 @@
 import Layout from "../layouts/Main.astro";
 import Gallery from "../components/Gallery.astro";
 
-import G1 from "../assets/apiary/3.jpg";
-import G2 from "../assets/apiary/1.jpg";
-import G3 from "../assets/apiary/2.jpg";
+import G1 from "../assets/apiary/1.jpg";
+import G2 from "../assets/apiary/2.jpg";
 
-const gallery = [G1, G2, G3];
+const gallery = [G1, G2];
 ---
 
 <Layout
@@ -20,7 +19,9 @@ const gallery = [G1, G2, G3];
         Our Apiary
       </h1>
       <p class="text-xl text-gray-700 dark:text-gray-200 leading-relaxed">
-        We hold our summer meetings at the Apiary and welcome volunteers throughout the year to help with inspections seasonal jobs and maintenence.
+        We hold our summer meetings at the Apiary and welcome volunteers
+        throughout the year to help with inspections seasonal jobs and
+        maintenence.
       </p>
     </div>
     <Gallery images={gallery} />
