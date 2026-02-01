@@ -15,7 +15,7 @@ export default defineConfig({
   output: "static",
 
   vite: {
-    plugins: [tailwindcss()]
+    plugins: [tailwindcss()],
   },
 
   adapter: vercel({
@@ -24,5 +24,7 @@ export default defineConfig({
     }
   }),
 
-  integrations: [sitemap()]
+  integrations: [sitemap({
+    filter: (page) => process.env.VERCEL_ENV !== 'preview',
+  })]
 });
