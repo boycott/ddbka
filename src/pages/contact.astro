@@ -1,13 +1,10 @@
 ---
 import Layout from "../layouts/Main.astro";
-
-const noHeader = true;
 ---
 
 <Layout
   title="Contact Us - Dover & District Beekeepers' Association"
   description="Get in touch with the Dover & District Beekeepers' Association for general enquiries, membership info, or swarm collection."
-  noHeader={noHeader}
 >
   <div class="max-w-4xl mx-auto">
     <!-- Page Header -->
@@ -167,39 +164,35 @@ const noHeader = true;
         </div>
 
         <!-- Quick Links -->
-        {
-          !noHeader && (
-            <div class="bg-amber-50 dark:bg-gray-800 p-8 rounded-xl shadow-sm border border-amber-100 dark:border-gray-700">
-              <h3 class="text-xl font-bold text-amber-600 mb-4">Quick Links</h3>
-              <ul class="space-y-3">
-                <li>
-                  <a
-                    href="/membership"
-                    class="text-amber-600 font-semibold hover:underline"
-                  >
-                    Join Our Association →
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="/hornets"
-                    class="text-amber-600 font-semibold hover:underline"
-                  >
-                    Report Asian Hornet →
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="/committee"
-                    class="text-amber-600 font-semibold hover:underline"
-                  >
-                    Meet the Committee →
-                  </a>
-                </li>
-              </ul>
-            </div>
-          )
-        }
+        <div class="bg-amber-50 dark:bg-gray-800 p-8 rounded-xl shadow-sm border border-amber-100 dark:border-gray-700">
+          <h3 class="text-xl font-bold text-amber-600 mb-4">Quick Links</h3>
+          <ul class="space-y-3">
+            <li>
+              <a
+                href="/membership"
+                class="text-amber-600 font-semibold hover:underline"
+              >
+                Join Our Association →
+              </a>
+            </li>
+            <li>
+              <a
+                href="/hornets"
+                class="text-amber-600 font-semibold hover:underline"
+              >
+                Report Asian Hornet →
+              </a>
+            </li>
+            <li>
+              <a
+                href="/committee"
+                class="text-amber-600 font-semibold hover:underline"
+              >
+                Meet the Committee →
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>

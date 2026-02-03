@@ -1,6 +1,12 @@
 ---
 import Layout from "../layouts/Main.astro";
+import Gallery from "../components/Gallery.astro";
+
 import Hornet from "../assets/4cb87f_8a4df804fa0e4288b85a020fafe814dd~mv2.avif";
+import H1 from "../assets/hornets/1.jpg";
+import H2 from "../assets/hornets/2.png";
+
+const gallery = [H1, H2];
 ---
 
 <Layout
@@ -76,6 +82,8 @@ import Hornet from "../assets/4cb87f_8a4df804fa0e4288b85a020fafe814dd~mv2.avif";
           </li>
         </ul>
       </section>
+
+      <Gallery images={gallery} gridCols="2" />
 
       <!-- Why It Matters -->
       <section

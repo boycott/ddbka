@@ -1,15 +1,9 @@
 ---
 import Layout from "../../layouts/Main.astro";
-import { getCollection } from "astro:content";
+import { getUpcoming, getPast } from "../../lib/meetings";
 
-const allMeetings = await getCollection("meetings");
-const meetings = allMeetings.sort(
-  (a, b) => a.data.date.valueOf() - b.data.date.valueOf(),
-);
-
-const now = new Date();
-const upcomingMeetings = meetings.filter((m) => m.data.date >= now);
-const pastMeetings = meetings.filter((m) => m.data.date < now);
+const upcomingMeetings = await getUpcoming();
+const pastMeetings = await getPast();
 ---
 
 <Layout
@@ -153,16 +147,6 @@ const pastMeetings = meetings.filter((m) => m.data.date < now);
               </article>
             ))}
           </div>
-        </div>
-      )
-    }
-
-    {
-      meetings.length === 0 && (
-        <div class="bg-amber-50 dark:bg-gray-800 p-8 rounded-xl shadow-sm border border-amber-100 dark:border-gray-700 text-center">
-          <p class="text-gray-700 dark:text-gray-300 text-lg">
-            No meetings scheduled at the moment. Check back soon!
-          </p>
         </div>
       )
     }
