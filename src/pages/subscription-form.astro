@@ -1,0 +1,647 @@
+---
+import Layout from "../layouts/Main.astro";
+---
+
+<Layout
+  title="Membership Subscription - Dover & District Beekeepers' Association"
+  description="Join the Dover & District Beekeepers' Association. Complete our online membership subscription form."
+>
+  <div class="max-w-4xl mx-auto">
+    <!-- Page Header -->
+    <div class="mb-12">
+      <h1 class="text-4xl md:text-5xl font-bold text-amber-600 mb-6">
+        Membership Subscription
+      </h1>
+      <p class="text-xl text-gray-700 dark:text-gray-200 leading-relaxed mb-4">
+        Please complete either form below to join the Dover & District Beekeepers'
+        Association.
+      </p>
+      <p class="text-xl text-gray-700 dark:text-gray-200 leading-relaxed mb-4">
+        The aims of the Association are:
+      </p>
+      <ul
+        class="ml-8 text-xl text-gray-700 dark:text-gray-200 leading-relaxed mb-4"
+      >
+        <li>
+          To promote good practical beekeeping by giving advice to beginners and
+          all beekeepers throughout the season;
+        </li>
+        <li>
+          To obtain equipment from reputable beekeeping suppliers at good sound
+          prices;
+        </li>
+        <li>
+          To keep in touch with all members by means of a monthly newsletter;
+        </li>
+        <li>
+          To hold monthly meetings at apiaries during the summer season and at
+          Alkham Village Hall or other similar venue during the winter period.
+        </li>
+      </ul>
+      <p class="text-xl text-gray-700 dark:text-gray-200 leading-relaxed mb-4">
+        <strong>Fees for one year</strong> (to 30th November {
+          new Date().getFullYear()
+        }) Please use on-line renewal and payment if possible.
+      </p>
+      <p class="text-xl text-gray-700 dark:text-gray-200 leading-relaxed mb-4">
+        <strong>Registered Member</strong>: (includes £23 BBKA membership + Bee
+        Disease Insurance cover)
+      </p>
+      <ul
+        class="columns-2 text-xl text-gray-700 dark:text-gray-200 leading-relaxed mb-4"
+      >
+        <li>
+          1-3 Hives <span data-hives-min="1" data-hives-max="3">£36.00</span>
+        </li>
+        <li>
+          4-5 Hives <span data-hives-min="4" data-hives-max="5">£37.20</span>
+        </li>
+        <li>
+          6-10 Hives <span data-hives-min="6" data-hives-max="10">£40.70</span>
+        </li>
+        <li>
+          11-15 Hives <span data-hives-min="11" data-hives-max="15">£43.75</span
+          >
+        </li>
+        <li>
+          16-20 Hives <span data-hives-min="16" data-hives-max="20">£45.50</span
+          >
+        </li>
+        <li>
+          21-25 Hives <span data-hives-min="21" data-hives-max="25">£47.10</span
+          >
+        </li>
+        <li>
+          26-30 Hives <span data-hives-min="26" data-hives-max="30">£49.60</span
+          >
+        </li>
+        <li>
+          31-35 Hives <span data-hives-min="31" data-hives-max="35">£52.10</span
+          >
+        </li>
+        <li>
+          36-39 Hives <span data-hives-min="36" data-hives-max="99">£54.10</span
+          >
+        </li>
+      </ul>
+      <p class="text-xl text-gray-700 dark:text-gray-200 leading-relaxed mb-4">
+        <strong>Associate Member</strong>: <span
+          data-hives-min="0"
+          data-hives-max="0">£10</span
+        > (excludes insurance & BBKA membership). 1st year under-18 FREE
+      </p>
+      <a
+        href="/subscription-form.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-block px-8 py-3 bg-amber-600 text-white font-semibold rounded-lg shadow-md hover:bg-amber-700 transition-colors"
+      >
+        Printable form
+      </a>
+    </div>
+
+    <!-- Subscription Form -->
+    <div
+      class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700"
+    >
+      <h2 class="text-2xl font-bold text-amber-600 mb-6">Subscription Form</h2>
+      <form
+        action="mailto:membership@ddbka.co.uk"
+        method="post"
+        enctype="text/plain"
+        class="space-y-6"
+      >
+        <!-- Name -->
+        <div>
+          <label
+            for="name"
+            class="block text-lg font-semibold text-gray-700 dark:text-gray-300 mb-2"
+          >
+            Name <span class="text-red-500">*</span>
+          </label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            required
+            class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition-colors dark:bg-gray-700 dark:text-gray-100"
+            placeholder="Your Full Name"
+          />
+        </div>
+
+        <!-- Address -->
+        <div>
+          <label
+            for="address"
+            class="block text-lg font-semibold text-gray-700 dark:text-gray-300 mb-2"
+          >
+            Address <span class="text-red-500">*</span>
+          </label>
+          <textarea
+            id="address"
+            name="address"
+            required
+            rows="3"
+            class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition-colors resize-vertical dark:bg-gray-700 dark:text-gray-100"
+            placeholder="Your Address"></textarea>
+        </div>
+
+        <!-- Postcode -->
+        <div>
+          <label
+            for="postcode"
+            class="block text-lg font-semibold text-gray-700 dark:text-gray-300 mb-2"
+          >
+            Postcode <span class="text-red-500">*</span>
+          </label>
+          <input
+            type="text"
+            id="postcode"
+            name="postcode"
+            required
+            class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition-colors dark:bg-gray-700 dark:text-gray-100"
+            placeholder="Postcode"
+          />
+        </div>
+
+        <!-- Phone Number -->
+        <div>
+          <label
+            for="phone"
+            class="block text-lg font-semibold text-gray-700 dark:text-gray-300 mb-2"
+          >
+            Phone Number <span class="text-red-500">*</span>
+          </label>
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            required
+            class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition-colors dark:bg-gray-700 dark:text-gray-100"
+            placeholder="Phone Number"
+          />
+        </div>
+
+        <!-- Email Address -->
+        <div>
+          <label
+            for="email"
+            class="block text-lg font-semibold text-gray-700 dark:text-gray-300 mb-2"
+          >
+            Email Address <span class="text-red-500">*</span>
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition-colors dark:bg-gray-700 dark:text-gray-100"
+            placeholder="john@example.com"
+          />
+        </div>
+        <div
+          class="mb-16 flex items-center w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg hover:border-amber-500 transition-colors bg-white dark:bg-gray-700"
+        >
+          <div class="h-5">
+            <input
+              id="u18"
+              name="u18"
+              type="checkbox"
+              class="w-5 h-5 text-amber-600 border-gray-300 rounded focus:ring-amber-500"
+            />
+          </div>
+          <div class="ml-3 text-lg">
+            <label
+              for="u18"
+              class="font-medium text-gray-700 dark:text-gray-100 cursor-pointer block"
+            >
+              Are you under 18?
+            </label>
+          </div>
+        </div>
+
+        <!-- Number of Hives -->
+        <div>
+          <label
+            for="hives_count"
+            class="block text-lg font-semibold text-gray-700 dark:text-gray-300 mb-2"
+          >
+            Number of Hives (please allow for any expected increase during the
+            year)
+          </label>
+          <input
+            type="number"
+            id="hives_count"
+            name="hives_count"
+            min="0"
+            class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition-colors dark:bg-gray-700 dark:text-gray-100"
+            placeholder="0"
+          />
+        </div>
+
+        <!-- Type of Hives -->
+        <div>
+          <label
+            for="hives_type"
+            class="block text-lg font-semibold text-gray-700 dark:text-gray-300 mb-2"
+          >
+            Type of Hives
+          </label>
+          <input
+            type="text"
+            id="hives_type"
+            name="type_of_hives"
+            class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition-colors dark:bg-gray-700 dark:text-gray-100"
+            placeholder="National"
+          />
+        </div>
+
+        <div>
+          <label
+            for="allergies"
+            class="block text-lg font-semibold text-gray-700 dark:text-gray-300 mb-2"
+          >
+            Do you suffer from any bee-related allergies?
+          </label>
+          <input
+            type="text"
+            id="allergies"
+            name="allergies"
+            class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition-colors dark:bg-gray-700 dark:text-gray-100"
+          />
+        </div>
+
+        <!-- Checkboxes -->
+        <div class="space-y-4 mb-16">
+          <!-- BeeBase Checkbox -->
+          <p class="text-lg text-gray-700 dark:text-gray-200 leading-relaxed">
+            Please register with BeeBase - it contains free, up to date local
+            information for all beekeepers.
+            <a
+              href="https://www.nationalbeeunit.com/register"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="underline">https://www.nationalbeeunit.com/register</a
+            >
+          </p>
+          <div
+            class="flex items-center w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg hover:border-amber-500 transition-colors bg-white dark:bg-gray-700"
+          >
+            <div class="h-5">
+              <input
+                id="beebase"
+                name="registered_on_beebase"
+                type="checkbox"
+                class="w-5 h-5 text-amber-600 border-gray-300 rounded focus:ring-amber-500"
+              />
+            </div>
+            <div class="ml-3 text-lg">
+              <label
+                for="beebase"
+                class="font-medium text-gray-700 dark:text-gray-100 cursor-pointer block"
+              >
+                Are you registered on BeeBase?
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="space-y-4 mb-16">
+          <h1 class="font-semibold text-lg">
+            Dover and District Beekeepers’ Association Volunteering:
+          </h1>
+          <p class="text-lg text-gray-700 dark:text-gray-200 leading-relaxed">
+            We encourage members to get involved and need help in the following
+            areas. Please tick any that you can help with and return with the
+            rest of the form:
+          </p>
+          <div
+            class="flex items-center w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg hover:border-amber-500 transition-colors bg-white dark:bg-gray-700"
+          >
+            <div class="h-5">
+              <input
+                id="inspections"
+                name="inspections"
+                type="checkbox"
+                class="w-5 h-5 text-amber-600 border-gray-300 rounded focus:ring-amber-500"
+              />
+            </div>
+            <div class="ml-3 text-lg">
+              <label
+                for="inspections"
+                class="font-medium text-gray-700 dark:text-gray-100 cursor-pointer block"
+              >
+                Apiary Inspections
+              </label>
+            </div>
+          </div>
+          <div
+            class="flex items-center w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg hover:border-amber-500 transition-colors bg-white dark:bg-gray-700"
+          >
+            <div class="h-5">
+              <input
+                id="honey"
+                name="honey"
+                type="checkbox"
+                class="w-5 h-5 text-amber-600 border-gray-300 rounded focus:ring-amber-500"
+              />
+            </div>
+            <div class="ml-3 text-lg">
+              <label
+                for="honey"
+                class="font-medium text-gray-700 dark:text-gray-100 cursor-pointer block"
+              >
+                Honey Extracting, Processing and Bottling
+              </label>
+            </div>
+          </div>
+          <div
+            class="flex items-center w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg hover:border-amber-500 transition-colors bg-white dark:bg-gray-700"
+          >
+            <div class="h-5">
+              <input
+                id="refreshments"
+                name="refreshments"
+                type="checkbox"
+                class="w-5 h-5 text-amber-600 border-gray-300 rounded focus:ring-amber-500"
+              />
+            </div>
+            <div class="ml-3 text-lg">
+              <label
+                for="refreshments"
+                class="font-medium text-gray-700 dark:text-gray-100 cursor-pointer block"
+              >
+                Refreshments at Monthly Meetings (preparing and/or serving)
+              </label>
+            </div>
+          </div>
+          <div
+            class="flex items-center w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg hover:border-amber-500 transition-colors bg-white dark:bg-gray-700"
+          >
+            <div class="h-5">
+              <input
+                id="maintenance"
+                name="maintenance"
+                type="checkbox"
+                class="w-5 h-5 text-amber-600 border-gray-300 rounded focus:ring-amber-500"
+              />
+            </div>
+            <div class="ml-3 text-lg">
+              <label
+                for="maintenance"
+                class="font-medium text-gray-700 dark:text-gray-100 cursor-pointer block"
+              >
+                Grounds Maintenance (e.g. grass cutting)
+              </label>
+            </div>
+          </div>
+          <div
+            class="flex items-center w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg hover:border-amber-500 transition-colors bg-white dark:bg-gray-700"
+          >
+            <div class="h-5">
+              <input
+                id="library"
+                name="library"
+                type="checkbox"
+                class="w-5 h-5 text-amber-600 border-gray-300 rounded focus:ring-amber-500"
+              />
+            </div>
+            <div class="ml-3 text-lg">
+              <label
+                for="library"
+                class="font-medium text-gray-700 dark:text-gray-100 cursor-pointer block"
+              >
+                Library - manning it at meetings
+              </label>
+            </div>
+          </div>
+          <div
+            class="flex items-center w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg hover:border-amber-500 transition-colors bg-white dark:bg-gray-700"
+          >
+            <div class="h-5">
+              <input
+                id="gate-duty"
+                name="gate-duty"
+                type="checkbox"
+                class="w-5 h-5 text-amber-600 border-gray-300 rounded focus:ring-amber-500"
+              />
+            </div>
+            <div class="ml-3 text-lg">
+              <label
+                for="gate-duty"
+                class="font-medium text-gray-700 dark:text-gray-100 cursor-pointer block"
+              >
+                Gate Duty at Monthly Meetings
+              </label>
+            </div>
+          </div>
+          <div
+            class="flex items-center w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg hover:border-amber-500 transition-colors bg-white dark:bg-gray-700"
+          >
+            <div class="h-5">
+              <input
+                id="other"
+                name="other"
+                type="checkbox"
+                class="w-5 h-5 text-amber-600 border-gray-300 rounded focus:ring-amber-500"
+              />
+            </div>
+            <div class="ml-3 text-lg">
+              <label
+                for="other"
+                class="font-medium text-gray-700 dark:text-gray-100 cursor-pointer block"
+              >
+                Other
+              </label>
+              <input
+                type="text"
+                id="other-details"
+                name="other-details"
+                class="inline-block w-full lg:w-3xl px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition-colors dark:bg-gray-700 dark:text-gray-100"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="space-y-4 mb-16">
+          <h1 class="font-semibold text-lg">Asian Hornet action team</h1>
+          <p class="text-lg text-gray-700 dark:text-gray-200 leading-relaxed">
+            The Association's AHAT Coordinator would like permission to contact
+            members to pass on information about Asian Hornet sightings and
+            trapping activities. Please indicate below if you DO NOT WANT your
+            contact details to be passed on to the AHAT coordinator:
+          </p>
+          <div
+            class="flex items-center w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg hover:border-amber-500 transition-colors bg-white dark:bg-gray-700"
+          >
+            <div class="h-5">
+              <input
+                id="no-email"
+                name="no-email"
+                type="checkbox"
+                class="w-5 h-5 text-amber-600 border-gray-300 rounded focus:ring-amber-500"
+              />
+            </div>
+            <div class="ml-3 text-lg">
+              <label
+                for="no-email"
+                class="font-medium text-gray-700 dark:text-gray-100 cursor-pointer block"
+              >
+                I DO NOT want my email address to be used for AHAT
+              </label>
+            </div>
+          </div>
+          <div
+            class="flex items-center w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg hover:border-amber-500 transition-colors bg-white dark:bg-gray-700"
+          >
+            <div class="h-5">
+              <input
+                id="no-phone"
+                name="no-phone"
+                type="checkbox"
+                class="w-5 h-5 text-amber-600 border-gray-300 rounded focus:ring-amber-500"
+              />
+            </div>
+            <div class="ml-3 text-lg">
+              <label
+                for="no-phone"
+                class="font-medium text-gray-700 dark:text-gray-100 cursor-pointer block"
+              >
+                I DO NOT want my phone numbeer to be used for AHAT
+              </label>
+            </div>
+          </div>
+        </div>
+        <div
+          class="text-lg text-gray-700 dark:text-gray-200 leading-relaxed mb-16"
+        >
+          <h1 class="mb-4 font-semibold text-xl">Use of your data</h1>
+          <p class="mb-4">
+            By paying your membership subscription and joining the Dover &
+            District Bee Keepers Association (DDBKA), you accept that we may
+            hold and process (use) the data you have given us, either on this
+            form or by any other means (e.g. email or on-line renewal) to manage
+            the affairs of the association.
+          </p>
+          <p class="mb-16">
+            You accept that we will pass your data to the BBKA (to enable you to
+            be a member of that organization and receive its publications) and
+            to BDI (to enable them to provide you with disease insurance). We
+            will not pass your data to any other organization. If you have any
+            queries about how we hold and process your data, please contact the
+            Hon Secretary (Maggie).
+          </p>
+          <h1 class="mb-4 font-semibold text-xl">
+            Agreement to Terms and Conditions of Membership
+          </h1>
+          <p class="mb-4">
+            By joining the DDBKA and becoming a member using this form or via
+            the on-line membership renewal or in any other way, you agree to the
+            terms and conditions of membership of the Association and to observe
+            the rules and safety guidance of the Association's apiary (or
+            apiaries) when attending meetings.
+          </p>
+          <p class="mb-4">
+            Specifically you accept that working with bees in the apiary carries
+            risk of personal injury, including from bee stings, from lighting
+            and using a smoker and from lifting heavy bee boxes etc, and you
+            agree to take full responsibility for your own health and safety
+            when in the Association’s apiary including the wearing of
+            appropriate safety clothing (bee suit, gloves, boots, etc).
+          </p>
+          <p class="mb-4">
+            If you have a sensitivity to bee stings, you must make this known to
+            DDBKA officers whenever you work with bees at the Association’s
+            apiary and must carry and be able to use an EpiPen if advised by
+            your doctor to do so.
+          </p>
+          <p class="mb-4">
+            A Risk Assessment is available at the apiary for your information.
+            You agree to comply with its recommended risk mitigation measures.
+          </p>
+        </div>
+        <div
+          class="text-lg text-gray-700 dark:text-gray-200 leading-relaxed mb-16"
+        >
+          <h1 class="mb-4 font-semibold text-xl">Fees payable</h1>
+          <p class="mb-4">
+            <strong>Amount</strong>: <input type="text" id="calculated-fee" readonly value="0"></strong>
+          </p>
+          <p class="font-semibold mb-4">Bank transfer details:</p>
+          <ul class="ml-8 mb-4">
+            <li>
+              <strong>Reference</strong>: <span id="reference"
+                >include your name</span
+              >
+            </li>
+            <li>
+              <strong>Account name</strong>: Dover & District Beekeepers'
+              Association
+            </li>
+            <li><strong>Account number</strong>: 30067863</li>
+            <li><strong>Sort code</strong>: 30-99-50</li>
+          </ul>
+          <p class="mb-4">
+            Or bring a cheque or cash to the next meeting in a sealed envelope,
+            and give to the secretary or treasurer only:
+          </p>
+          <p class="font-semibold mb-4">Cheque details:</p>
+          <ul class="ml-8 mb-4">
+            <li>
+              <strong>Payable to</strong>: Dover and District Beekeepers'
+              Association
+            </li>
+          </ul>
+        </div>
+        <button
+          type="submit"
+          class="w-full px-8 py-3 bg-amber-600 text-white font-semibold rounded-lg shadow-md hover:bg-amber-700 transition-colors mt-6"
+        >
+          Submit Application
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const u18Input = document.getElementById("u18") as HTMLInputElement;
+    const hivesInput = document.getElementById(
+      "hives_count",
+    ) as HTMLInputElement;
+    const fees = Array.from(document.querySelectorAll("[data-hives-min]"));
+    const feeDisplay = document.getElementById("calculated-fee") as HTMLInputElement;
+    const referenceDisplay = document.getElementById("reference");
+    const nameInput = document.getElementById("name") as HTMLInputElement;
+
+    function updateFee() {
+      const hives = parseInt(hivesInput.value) || 0;
+      let feeText = "£10"; // Default to Associate Member price (0 hives)
+
+      for (const feeSpan of fees) {
+        const min = parseInt(feeSpan.getAttribute("data-hives-min") || "0");
+        const max = parseInt(feeSpan.getAttribute("data-hives-max") || "0");
+
+        if (hives === 0 && u18Input.checked) {
+          feeText = "£0";
+        } else if (hives >= min && hives <= max) {
+          feeText = feeSpan.textContent || "";
+        }
+      }
+
+      if (feeDisplay) {
+        feeDisplay.value = feeText;
+      }
+    }
+
+    function updateReference() {
+      if (referenceDisplay && nameInput) {
+        referenceDisplay.textContent = nameInput.value;
+      }
+    }
+
+    if (u18Input) u18Input.addEventListener("input", updateFee);
+    if (hivesInput) hivesInput.addEventListener("input", updateFee);
+
+    if (nameInput) nameInput.addEventListener("input", updateReference);
+
+    updateFee();
+  </script>
+</Layout>
