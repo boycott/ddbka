@@ -13,8 +13,8 @@ import Layout from "../layouts/Main.astro";
         Membership Subscription
       </h1>
       <p class="text-xl text-gray-700 dark:text-gray-200 leading-relaxed mb-4">
-        Please complete either form below to join the Dover & District Beekeepers'
-        Association.
+        Please complete either form below to join the Dover & District
+        Beekeepers' Association.
       </p>
       <p class="text-xl text-gray-700 dark:text-gray-200 leading-relaxed mb-4">
         The aims of the Association are:
@@ -106,9 +106,8 @@ import Layout from "../layouts/Main.astro";
     >
       <h2 class="text-2xl font-bold text-amber-600 mb-6">Subscription Form</h2>
       <form
-        action="mailto:membership@ddbka.co.uk"
-        method="post"
-        enctype="text/plain"
+        action="https://formspree.io/f/mykdwwgo"
+        method="POST"
         class="space-y-6"
       >
         <!-- Name -->
@@ -311,8 +310,7 @@ import Layout from "../layouts/Main.astro";
           </h1>
           <p class="text-lg text-gray-700 dark:text-gray-200 leading-relaxed">
             We encourage members to get involved and need help in the following
-            areas. Please tick any that you can help with and return with the
-            rest of the form:
+            areas. Please select any that you can help with:
           </p>
           <div
             class="flex items-center w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg hover:border-amber-500 transition-colors bg-white dark:bg-gray-700"
@@ -505,7 +503,7 @@ import Layout from "../layouts/Main.astro";
                 for="no-phone"
                 class="font-medium text-gray-700 dark:text-gray-100 cursor-pointer block"
               >
-                I DO NOT want my phone numbeer to be used for AHAT
+                I DO NOT want my phone number to be used for AHAT
               </label>
             </div>
           </div>
@@ -563,34 +561,40 @@ import Layout from "../layouts/Main.astro";
         >
           <h1 class="mb-4 font-semibold text-xl">Fees payable</h1>
           <p class="mb-4">
-            <strong>Amount</strong>: <input type="text" id="calculated-fee" readonly value="0"></strong>
+            <strong>Amount</strong>: <input
+              type="text"
+              id="calculated-fee"
+              name="calculated-fee"
+              readonly
+              value="£0"
+            />
           </p>
-          <p class="font-semibold mb-4">Bank transfer details:</p>
-          <ul class="ml-8 mb-4">
-            <li>
-              <strong>Reference</strong>: <span id="reference"
-                >include your name</span
-              >
-            </li>
-            <li>
-              <strong>Account name</strong>: Dover & District Beekeepers'
-              Association
-            </li>
-            <li><strong>Account number</strong>: 30067863</li>
-            <li><strong>Sort code</strong>: 30-99-50</li>
-          </ul>
-          <p class="mb-4">
-            Or bring a cheque or cash to the next meeting in a sealed envelope,
-            and give to the secretary or treasurer only:
-          </p>
-          <p class="font-semibold mb-4">Cheque details:</p>
-          <ul class="ml-8 mb-4">
-            <li>
-              <strong>Payable to</strong>: Dover and District Beekeepers'
-              Association
-            </li>
-          </ul>
         </div>
+        <p class="font-semibold mb-4">Bank transfer details:</p>
+        <ul class="ml-8 mb-4">
+          <li>
+            <strong>Reference</strong>: <span id="reference"
+              >include your name</span
+            >
+          </li>
+          <li>
+            <strong>Account name</strong>: Dover & District Beekeepers'
+            Association
+          </li>
+          <li><strong>Account number</strong>: 30067863</li>
+          <li><strong>Sort code</strong>: 30-99-50</li>
+        </ul>
+        <p class="mb-4">
+          Or bring a cheque or cash to the next meeting in a sealed envelope,
+          and give to the secretary or treasurer only:
+        </p>
+        <p class="font-semibold mb-4">Cheque details:</p>
+        <ul class="ml-8 mb-4">
+          <li>
+            <strong>Payable to</strong>: Dover and District Beekeepers'
+            Association
+          </li>
+        </ul>
         <button
           type="submit"
           class="w-full px-8 py-3 bg-amber-600 text-white font-semibold rounded-lg shadow-md hover:bg-amber-700 transition-colors mt-6"
@@ -600,48 +604,48 @@ import Layout from "../layouts/Main.astro";
       </form>
     </div>
   </div>
-
-  <script>
-    const u18Input = document.getElementById("u18") as HTMLInputElement;
-    const hivesInput = document.getElementById(
-      "hives_count",
-    ) as HTMLInputElement;
-    const fees = Array.from(document.querySelectorAll("[data-hives-min]"));
-    const feeDisplay = document.getElementById("calculated-fee") as HTMLInputElement;
-    const referenceDisplay = document.getElementById("reference");
-    const nameInput = document.getElementById("name") as HTMLInputElement;
-
-    function updateFee() {
-      const hives = parseInt(hivesInput.value) || 0;
-      let feeText = "£10"; // Default to Associate Member price (0 hives)
-
-      for (const feeSpan of fees) {
-        const min = parseInt(feeSpan.getAttribute("data-hives-min") || "0");
-        const max = parseInt(feeSpan.getAttribute("data-hives-max") || "0");
-
-        if (hives === 0 && u18Input.checked) {
-          feeText = "£0";
-        } else if (hives >= min && hives <= max) {
-          feeText = feeSpan.textContent || "";
-        }
-      }
-
-      if (feeDisplay) {
-        feeDisplay.value = feeText;
-      }
-    }
-
-    function updateReference() {
-      if (referenceDisplay && nameInput) {
-        referenceDisplay.textContent = nameInput.value;
-      }
-    }
-
-    if (u18Input) u18Input.addEventListener("input", updateFee);
-    if (hivesInput) hivesInput.addEventListener("input", updateFee);
-
-    if (nameInput) nameInput.addEventListener("input", updateReference);
-
-    updateFee();
-  </script>
 </Layout>
+
+<script>
+  const u18Input = document.getElementById("u18") as HTMLInputElement;
+  const hivesInput = document.getElementById("hives_count") as HTMLInputElement;
+  const fees = Array.from(document.querySelectorAll("[data-hives-min]"));
+  const feeDisplay = document.getElementById(
+    "calculated-fee",
+  ) as HTMLInputElement;
+  const referenceDisplay = document.getElementById("reference");
+  const nameInput = document.getElementById("name") as HTMLInputElement;
+
+  function updateFee() {
+    const hives = parseInt(hivesInput.value) || 0;
+    let feeText = "£10"; // Default to Associate Member price (0 hives)
+
+    for (const feeSpan of fees) {
+      const min = parseInt(feeSpan.getAttribute("data-hives-min") || "0");
+      const max = parseInt(feeSpan.getAttribute("data-hives-max") || "0");
+
+      if (hives === 0 && u18Input.checked) {
+        feeText = "£0";
+      } else if (hives >= min && hives <= max) {
+        feeText = feeSpan.textContent || "";
+      }
+    }
+
+    if (feeDisplay) {
+      feeDisplay.value = feeText;
+    }
+  }
+
+  function updateReference() {
+    if (referenceDisplay && nameInput) {
+      referenceDisplay.textContent = nameInput.value;
+    }
+  }
+
+  if (u18Input) u18Input.addEventListener("input", updateFee);
+  if (hivesInput) hivesInput.addEventListener("input", updateFee);
+
+  if (nameInput) nameInput.addEventListener("input", updateReference);
+
+  updateFee();
+</script>
