@@ -109,7 +109,9 @@ import Layout from "../layouts/Main.astro";
         action="https://formspree.io/f/mykdwwgo"
         method="POST"
         class="space-y-6"
+        data-response-text="Thank you for submitting your subscription. Please ensure you have paid your subscription following the instructions below."
       >
+        <p class="response-text font-bold text-red-500 mb-4"></p>
         <!-- Name -->
         <div>
           <label
@@ -649,3 +651,4 @@ import Layout from "../layouts/Main.astro";
 
   updateFee();
 </script>
+<script src="../scripts/form.ts"></script>
