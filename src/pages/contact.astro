@@ -28,11 +28,11 @@ import Layout from "../layouts/Main.astro";
           Send us a Message
         </h2>
         <form
-          action="mailto:enquiries@ddbka.co.uk"
-          method="post"
-          enctype="text/plain"
+          action="https://formspree.io/f/mreaqqgp"
+          method="POST"
           class="space-y-6"
         >
+          <p class="response-text font-bold text-red-500 mb-4"></p>
           <div>
             <label
               for="name"
@@ -197,3 +197,4 @@ import Layout from "../layouts/Main.astro";
     </div>
   </div>
 </Layout>
+<script src="../scripts/form.ts"></script>
