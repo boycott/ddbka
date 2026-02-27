@@ -28,7 +28,11 @@ import Honey6 from "../assets/2025-honey-show/IMG_3865.jpg";
     </div>
 
     <!-- Featured Image -->
-    <Gallery images={[Honey1, Honey2, Honey3, Honey4, Honey5, Honey6]} />
+    <Gallery
+      images={[Honey1, Honey2, Honey3, Honey4, Honey5, Honey6].map((img) => ({
+        src: img,
+      }))}
+    />
 
     <!-- Content Sections -->
     <div class="space-y-12">

@@ -60,7 +60,7 @@ const { Content } = await render(post);
     </div>
     {
       post.data.gallery && post.data.gallery.length > 0 && (
-        <Gallery images={post.data.gallery} padding="mt-12" />
+        <Gallery images={post.data.gallery} padding="mt-12" showTitles={post.data.showGalleryTitles} />
       )
     }
 

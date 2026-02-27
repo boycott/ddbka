@@ -9,7 +9,11 @@ const newsCollection = defineCollection({
     pubDate: z.date(),
     author: z.string().default('DDBKA Committee'),
     tags: z.array(z.string()).default([]),
-    gallery: z.array(image()).optional()
+    showGalleryTitles: z.boolean().default(false),
+    gallery: z.array(z.object({
+      src: image(),
+      title: z.string().optional()
+    })).optional()
   })
 });
 
@@ -20,7 +24,11 @@ const eventsCollection = defineCollection({
     date: z.date(),
     location: z.string(),
     time: z.string().optional(),
-    gallery: z.array(image()).optional()
+    showGalleryTitles: z.boolean().default(false),
+    gallery: z.array(z.object({
+      src: image(),
+      title: z.string().optional()
+    })).optional()
   })
 });
 
@@ -31,7 +39,11 @@ const meetingsCollection = defineCollection({
     date: z.date(),
     location: z.string(),
     time: z.string().optional(),
-    gallery: z.array(image()).optional()
+    showGalleryTitles: z.boolean().default(false),
+    gallery: z.array(z.object({
+      src: image(),
+      title: z.string().optional()
+    })).optional()
   })
 });
 

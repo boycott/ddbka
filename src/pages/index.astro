@@ -10,7 +10,6 @@ const sortedNews = allNews.sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 ).flatMap((news, i, sorted) => {
 	if (i === 0) return [news];
-	console.log(new Date(news.data.pubDate), new Date(sorted[0].data.pubDate));
 	if (new Date(news.data.pubDate).valueOf() === new Date(sorted[0].data.pubDate).valueOf()) return [news];
 	return [];
 });
