@@ -2,13 +2,23 @@
 import { Image } from "astro:assets";
 
 type Props = {
-  images: ImageMetadata[];
+  images: {
+    src: ImageMetadata;
+    title?: string;
+  }[];
   title?: string;
   padding?: string;
   gridCols?: string;
+  showTitles?: boolean;
 };
 
-const { images, title, padding = "mb-12", gridCols = "3" } = Astro.props;
+const {
+  images,
+  title,
+  padding = "mb-12",
+  gridCols = "3",
+  showTitles = false,
+} = Astro.props;
 ---
 
 {
@@ -19,23 +29,32 @@ const { images, title, padding = "mb-12", gridCols = "3" } = Astro.props;
           {title}
         </h2>
       )}
-      <div class={`grid grid-cols-1 md:grid-cols-2 ${images.length > 2 && "lg:grid-cols-3"} gap-4`}>
+      <div
+        class={`grid grid-cols-1 md:grid-cols-2 ${images.length > 2 && "lg:grid-cols-3"} gap-4`}
+      >
         {images.map((image, index) => (
-          <button
-            class="gallery-trigger group relative aspect-square overflow-hidden rounded-xl bg-gray-100 dark:bg-gray-800 focus:outline-none focus:ring-4 focus:ring-amber-500/50 transition-all hover:scale-[1.02]"
-            aria-label={`View gallery image ${index + 1}`}
-            data-index={index}
-            data-src={image.src}
-          >
-            <Image
-              src={image}
-              alt={`${title} image ${index + 1}`}
-              width={600}
-              height={600}
-              class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
-            />
-            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
-          </button>
+          <div class="flex flex-col gap-3">
+            {showTitles && image.title && (
+              <h3 class="text-center font-medium text-gray-800 dark:text-gray-200 truncate px-2">
+                {image.title}
+              </h3>
+            )}
+            <button
+              class="gallery-trigger group relative w-full aspect-square overflow-hidden rounded-xl bg-gray-100 dark:bg-gray-800 focus:outline-none focus:ring-4 focus:ring-amber-500/50 transition-all hover:scale-[1.02]"
+              aria-label={`View gallery image ${index + 1}`}
+              data-index={index}
+              data-src={image.src.src}
+            >
+              <Image
+                src={image.src}
+                alt={image.title || `${title} image ${index + 1}`}
+                width={600}
+                height={600}
+                class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+              />
+              <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
+            </button>
+          </div>
         ))}
       </div>
     </div>
@@ -139,7 +158,11 @@ const { images, title, padding = "mb-12", gridCols = "3" } = Astro.props;
 
 <script
   define:vars={{
-    galleryImages: images?.map((img) => img.src) || [],
+    galleryImages:
+      images?.map((img) => ({
+        src: img.src.src,
+        title: img.title,
+      })) || [],
     title: title,
   }}
 >
@@ -164,8 +187,10 @@ const { images, title, padding = "mb-12", gridCols = "3" } = Astro.props;
 
       setTimeout(() => {
         currentIndex = index;
-        imgElement.src = galleryImages[currentIndex];
-        imgElement.alt = `${title} image ${currentIndex + 1}`;
+        imgElement.src = galleryImages[currentIndex].src;
+        imgElement.alt =
+          galleryImages[currentIndex].title ||
+          `${title} image ${currentIndex + 1}`;
         if (currentSpan) currentSpan.textContent = currentIndex + 1;
 
         // Update button states

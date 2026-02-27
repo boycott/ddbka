@@ -8,8 +8,11 @@ import { getUpcoming, getPast } from "../lib/meetings";
 const allNews = await getCollection("news");
 const sortedNews = allNews.sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-);
-const latestNews = sortedNews[0];
+).flatMap((news, i, sorted) => {
+	if (i === 0) return [news];
+	if (new Date(news.data.pubDate).valueOf() === new Date(sorted[0].data.pubDate).valueOf()) return [news];
+	return [];
+});
 
 // Get the most recent past meeting
 const latestPastMeeting = (await getPast(1))[0];
@@ -95,21 +98,27 @@ const formatDate = (date: Date) => {
 	<div class="grid md:grid-cols-3 gap-8 py-10 border-t border-gray-200">
 		<!-- Latest News -->
 		{
-			latestNews && (
+			sortedNews && (
 				<div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
-					<h3 class="text-xl font-bold text-amber-600 mb-3">Latest News</h3>
+					<h3 class="text-xl font-bold text-amber-600 mb-3">
+						<a href="/news">Latest News</a>
+					</h3>
 					<p class="text-sm text-gray-500 dark:text-gray-400 mb-2">
-						{formatDate(latestNews.data.pubDate)}
+						{formatDate(sortedNews[0].data.pubDate)}
 					</p>
-					<p class="font-semibold text-gray-800 dark:text-gray-100 mb-2">
-						{latestNews.data.title}
-					</p>
-					<a
-						href={`/news/${latestNews.id}`}
-						class="text-amber-600 dark:text-amber-500 font-semibold hover:underline"
-					>
-						Read more &rarr;
-					</a>
+					{sortedNews.map((news) => (
+						<div class="mb-4">
+							<p class="font-semibold text-gray-800 dark:text-gray-100 mb-2">
+								{news.data.title}
+							</p>
+							<a
+								href={`/news/${news.id}`}
+								class="text-amber-600 dark:text-amber-500 font-semibold hover:underline"
+							>
+								Read more &rarr;
+							</a>
+						</div>
+					))}
 				</div>
 			)
 		}

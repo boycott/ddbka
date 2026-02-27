@@ -1,6 +1,7 @@
 ---
 import { getCollection, type CollectionEntry, render } from "astro:content";
 import Layout from "../../layouts/Main.astro";
+import Gallery from "../../components/Gallery.astro";
 
 export async function getStaticPaths() {
   const posts = await getCollection("news");
@@ -57,6 +58,11 @@ const { Content } = await render(post);
     <div class="prose prose-amber dark:prose-invert max-w-none">
       <Content />
     </div>
+    {
+      post.data.gallery && post.data.gallery.length > 0 && (
+        <Gallery images={post.data.gallery} padding="mt-12" showTitles={post.data.showGalleryTitles} />
+      )
+    }
 
     <footer class="mt-12 pt-8 border-t border-gray-100 dark:border-gray-700">
       <a href="/news" class="text-amber-600 font-semibold hover:underline">
