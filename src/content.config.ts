@@ -4,11 +4,12 @@ import { z } from 'astro/zod';
 
 const newsCollection = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './collections/news' }),
-  schema: z.object({
+  schema: ({ image }) => z.object({
     title: z.string(),
     pubDate: z.date(),
     author: z.string().default('DDBKA Committee'),
-    tags: z.array(z.string()).default([])
+    tags: z.array(z.string()).default([]),
+    gallery: z.array(image()).optional()
   })
 });
 
