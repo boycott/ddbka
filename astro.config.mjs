@@ -1,5 +1,5 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
+import { defineConfig, fontProviders } from 'astro/config';
 
 import tailwindcss from '@tailwindcss/vite';
 
@@ -14,8 +14,17 @@ export default defineConfig({
   site,
   output: "static",
 
+  fonts: [
+    {
+      provider: fontProviders.google(),
+      name: "Open Sans",
+      cssVariable: "--font-open-sans",
+      weights: [300, 400, 500, 600, 700, 800],
+    }
+  ],
+
   vite: {
-    plugins: [tailwindcss()],
+    plugins: [/** @type {any} */ (tailwindcss())],
   },
 
   adapter: vercel({
