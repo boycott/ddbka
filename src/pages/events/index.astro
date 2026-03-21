@@ -50,7 +50,12 @@ const events = allEvents
 
                   <div class="flex-1">
                     <h3 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">
-                      {event.data.title}
+                      <a
+                        href={`/events/${event.id}`}
+                        class="hover:text-amber-600 transition-colors"
+                      >
+                        {event.data.title}
+                      </a>
                     </h3>
 
                     <div class="flex flex-wrap gap-4 text-sm text-gray-600 dark:text-gray-300 mb-3">

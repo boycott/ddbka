@@ -2,20 +2,35 @@
 import Layout from "../layouts/Main.astro";
 import bee from "../assets/bee.avif";
 import { getCollection } from "astro:content";
-import { getUpcoming, getPast } from "../lib/meetings";
+import { getUpcoming } from "../lib/meetings";
 
 // Get the most recent news article
 const allNews = await getCollection("news");
-const sortedNews = allNews.sort(
-	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-).flatMap((news, i, sorted) => {
-	if (i === 0) return [news];
-	if (new Date(news.data.pubDate).valueOf() === new Date(sorted[0].data.pubDate).valueOf()) return [news];
-	return [];
-});
+const sortedNews = allNews
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+	.flatMap((news, i, sorted) => {
+		if (i === 0) return [news];
+		if (
+			new Date(news.data.pubDate).valueOf() ===
+			new Date(sorted[0].data.pubDate).valueOf()
+		)
+			return [news];
+		return [];
+	});
 
-// Get the most recent past meeting
-const latestPastMeeting = (await getPast(1))[0];
+// Get the most recent event
+const allEvents = await getCollection("events");
+const sortedEvents = allEvents
+	.sort((a, b) => a.data.date.valueOf() - b.data.date.valueOf())
+	.flatMap((event, i, sorted) => {
+		if (i === 0) return [event];
+		if (
+			new Date(event.data.date).valueOf() ===
+			new Date(sorted[0].data.date).valueOf()
+		)
+			return [event];
+		return [];
+	});
 
 // Get the next upcoming meeting
 const nextMeeting = (await getUpcoming(1))[0];
@@ -123,22 +138,22 @@ const formatDate = (date: Date) => {
 			)
 		}
 
-		<!-- Most Recent Past Meeting -->
+		<!-- Upcoming Meetings -->
 		{
-			latestPastMeeting && (
+			nextMeeting && (
 				<div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
 					<h3 class="text-xl font-bold text-amber-600 mb-3">
-						Most Recent Meeting
+						<a href="/meetings">Upcoming Meetings</a>
 					</h3>
 					<p class="text-sm text-gray-500 dark:text-gray-400 mb-2">
-						{formatDate(latestPastMeeting.data.date)}
-						{latestPastMeeting.data.time && ` • ${latestPastMeeting.data.time}`}
+						{formatDate(nextMeeting.data.date)}
+						{nextMeeting.data.time && ` • ${nextMeeting.data.time}`}
 					</p>
 					<p class="font-semibold text-gray-800 dark:text-gray-100 mb-2">
-						{latestPastMeeting.data.title}
+						{nextMeeting.data.title}, {nextMeeting.data.location}
 					</p>
 					<a
-						href={`/meetings/${latestPastMeeting.id}`}
+						href={`/meetings/${nextMeeting.id}`}
 						class="text-amber-600 dark:text-amber-500 font-semibold hover:underline"
 					>
 						View details &rarr;
@@ -147,24 +162,30 @@ const formatDate = (date: Date) => {
 			)
 		}
 
-		<!-- Next Upcoming Meeting -->
+		<!-- Upcoming Events -->
 		{
-			nextMeeting && (
+			sortedEvents && (
 				<div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
-					<h3 class="text-xl font-bold text-amber-600 mb-3">Next Meeting</h3>
+					<h3 class="text-xl font-bold text-amber-600 mb-3">
+						<a href="/events">Upcoming Events</a>
+					</h3>
 					<p class="text-sm text-gray-500 dark:text-gray-400 mb-2">
-						{formatDate(nextMeeting.data.date)}
-						{nextMeeting.data.time && ` • ${nextMeeting.data.time}`}
+						{formatDate(sortedEvents[0].data.date)}
+						{sortedEvents[0].data.time && ` • ${sortedEvents[0].data.time}`}
 					</p>
-					<p class="font-semibold text-gray-800 dark:text-gray-100 mb-2">
-						{nextMeeting.data.title}
-					</p>
-					<a
-						href={`/meetings/${nextMeeting.id}`}
-						class="text-amber-600 dark:text-amber-500 font-semibold hover:underline"
-					>
-						View details &rarr;
-					</a>
+					{sortedEvents.map((event) => (
+						<div class="mb-4">
+							<p class="font-semibold text-gray-800 dark:text-gray-100 mb-2">
+								{event.data.title}
+							</p>
+							<a
+								href={`/events/${event.id}`}
+								class="text-amber-600 dark:text-amber-500 font-semibold hover:underline"
+							>
+								View details &rarr;
+							</a>
+						</div>
+					))}
 				</div>
 			)
 		}
