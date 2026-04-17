@@ -1,12 +1,8 @@
 ---
 import Layout from "../../layouts/Main.astro";
-import { getCollection } from "astro:content";
+import { getUpcoming } from "../../lib/events";
 
-const allEvents = await getCollection("events");
-const now = new Date();
-const events = allEvents
-  .sort((a, b) => a.data.date.valueOf() - b.data.date.valueOf())
-  .filter((m) => m.data.date >= now);
+const upcomingEvents = await getUpcoming();
 ---
 
 <Layout
@@ -25,13 +21,13 @@ const events = allEvents
 
     <!-- Events -->
     {
-      events.length > 0 && (
+      upcomingEvents.length > 0 && (
         <div class="mb-12">
           <h2 class="text-3xl font-bold text-amber-600 mb-6">
             Upcoming Events
           </h2>
           <div class="grid gap-6">
-            {events.map((event) => (
+            {upcomingEvents.map((event) => (
               <article class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-md transition-shadow">
                 <div class="flex flex-col md:flex-row gap-6">
                   <div class="flex-shrink-0">
@@ -79,7 +75,7 @@ const events = allEvents
       )
     }
     {
-      events.length === 0 && (
+      upcomingEvents.length === 0 && (
         <div class="bg-amber-50 dark:bg-gray-800 p-8 rounded-xl shadow-sm border border-amber-100 dark:border-gray-700 text-center">
           <p class="text-gray-700 dark:text-gray-300 text-lg">
             No events scheduled at the moment. Check back soon.
