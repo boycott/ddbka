@@ -106,7 +106,7 @@ const formatDate = (date: Date) => {
 			sortedNews && (
 				<div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
 					<h3 class="text-xl font-bold text-amber-600 mb-3">
-						<a href="/news">Latest News</a>
+						<a href="/news">News</a>
 					</h3>
 					<p class="text-sm text-gray-500 dark:text-gray-400 mb-2">
 						{formatDate(sortedNews[0].data.pubDate)}
@@ -114,13 +114,15 @@ const formatDate = (date: Date) => {
 					{sortedNews.map((news) => (
 						<div class="mb-4">
 							<p class="font-semibold text-gray-800 dark:text-gray-100 mb-2">
-								{news.data.title}
+								<a href={`/news/${news.id}`} class="hover:underline">
+									{news.data.title}
+								</a>
 							</p>
 							<a
-								href={`/news/${news.id}`}
+								href="/news"
 								class="text-amber-600 dark:text-amber-500 font-semibold hover:underline"
 							>
-								Read more &rarr;
+								View all news &rarr;
 							</a>
 						</div>
 					))}
@@ -133,20 +135,22 @@ const formatDate = (date: Date) => {
 			nextMeeting && (
 				<div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
 					<h3 class="text-xl font-bold text-amber-600 mb-3">
-						<a href="/meetings">Next Meeting</a>
+						<a href={`/meetings/${nextMeeting.id}`}>Next Meeting</a>
 					</h3>
 					<p class="text-sm text-gray-500 dark:text-gray-400 mb-2">
 						{formatDate(nextMeeting.data.date)}
 						{nextMeeting.data.time && ` • ${nextMeeting.data.time}`}
 					</p>
 					<p class="font-semibold text-gray-800 dark:text-gray-100 mb-2">
-						{nextMeeting.data.title}, {nextMeeting.data.location}
+						<a href={`/meetings/${nextMeeting.id}`} class="hover:underline">
+							{nextMeeting.data.title}, {nextMeeting.data.location}
+						</a>
 					</p>
 					<a
-						href={`/meetings/${nextMeeting.id}`}
+						href="/meetings"
 						class="text-amber-600 dark:text-amber-500 font-semibold hover:underline"
 					>
-						View details &rarr;
+						View all meetings &rarr;
 					</a>
 				</div>
 			)
@@ -157,7 +161,7 @@ const formatDate = (date: Date) => {
 			nextEvent && (
 				<div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
 					<h3 class="text-xl font-bold text-amber-600 mb-3">
-						<a href="/events">Next Event</a>
+						<a href={`/events/${nextEvent.id}`}>Next Event</a>
 					</h3>
 					<p class="text-sm text-gray-500 dark:text-gray-400 mb-2">
 						{formatDate(nextEvent.data.date)}
@@ -165,13 +169,15 @@ const formatDate = (date: Date) => {
 					</p>
 					<div class="mb-4">
 						<p class="font-semibold text-gray-800 dark:text-gray-100 mb-2">
-							{nextEvent.data.title}
+							<a href={`/events/${nextEvent.id}`} class="hover:underline">
+								{nextEvent.data.title}
+							</a>
 						</p>
 						<a
-							href={`/events/${nextEvent.id}`}
+							href="/events"
 							class="text-amber-600 dark:text-amber-500 font-semibold hover:underline"
 						>
-							View details &rarr;
+							View all events &rarr;
 						</a>
 					</div>
 				</div>
