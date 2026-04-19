@@ -2,7 +2,8 @@
 import Layout from "../layouts/Main.astro";
 import bee from "../assets/bee.avif";
 import { getCollection } from "astro:content";
-import { getUpcoming } from "../lib/meetings";
+import { getUpcoming as getUpcomingEvents } from "../lib/events";
+import { getUpcoming as getUpcomingMeetings } from "../lib/meetings";
 
 // Get the most recent news article
 const allNews = await getCollection("news");
@@ -19,21 +20,10 @@ const sortedNews = allNews
 	});
 
 // Get the most recent event
-const allEvents = await getCollection("events");
-const sortedEvents = allEvents
-	.sort((a, b) => a.data.date.valueOf() - b.data.date.valueOf())
-	.flatMap((event, i, sorted) => {
-		if (i === 0) return [event];
-		if (
-			new Date(event.data.date).valueOf() ===
-			new Date(sorted[0].data.date).valueOf()
-		)
-			return [event];
-		return [];
-	});
+const nextEvent = (await getUpcomingEvents(1))[0];
 
 // Get the next upcoming meeting
-const nextMeeting = (await getUpcoming(1))[0];
+const nextMeeting = (await getUpcomingMeetings(1))[0];
 
 // Format date helper
 const formatDate = (date: Date) => {
@@ -164,28 +154,26 @@ const formatDate = (date: Date) => {
 
 		<!-- Upcoming Events -->
 		{
-			sortedEvents && (
+			nextEvent && (
 				<div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
 					<h3 class="text-xl font-bold text-amber-600 mb-3">
 						<a href="/events">Upcoming Events</a>
 					</h3>
 					<p class="text-sm text-gray-500 dark:text-gray-400 mb-2">
-						{formatDate(sortedEvents[0].data.date)}
-						{sortedEvents[0].data.time && ` • ${sortedEvents[0].data.time}`}
+						{formatDate(nextEvent.data.date)}
+						{nextEvent.data.time && ` • ${nextEvent.data.time}`}
 					</p>
-					{sortedEvents.map((event) => (
-						<div class="mb-4">
-							<p class="font-semibold text-gray-800 dark:text-gray-100 mb-2">
-								{event.data.title}
-							</p>
-							<a
-								href={`/events/${event.id}`}
-								class="text-amber-600 dark:text-amber-500 font-semibold hover:underline"
-							>
-								View details &rarr;
-							</a>
-						</div>
-					))}
+					<div class="mb-4">
+						<p class="font-semibold text-gray-800 dark:text-gray-100 mb-2">
+							{nextEvent.data.title}
+						</p>
+						<a
+							href={`/events/${nextEvent.id}`}
+							class="text-amber-600 dark:text-amber-500 font-semibold hover:underline"
+						>
+							View details &rarr;
+						</a>
+					</div>
 				</div>
 			)
 		}

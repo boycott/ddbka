@@ -4,7 +4,17 @@ export function startOfToday() {
   return new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()));
 }
 
-export function getUpcomingCollection(collection: { data: { date: Date } }[], limit?: number) {
+type Collection = {
+  id: String,
+  data: {
+    date: Date,
+    time?: String,
+    title: String,
+    location: String,
+  }
+}
+
+export function getUpcomingCollection(collection: Collection[], limit?: number) {
   const today = startOfToday();
 
   const upcoming = collection
@@ -14,7 +24,7 @@ export function getUpcomingCollection(collection: { data: { date: Date } }[], li
   return upcoming.slice(0, limit);
 }
 
-export function getPastCollection(collection: { data: { date: Date } }[], limit?: number) {
+export function getPastCollection(collection: Collection[], limit?: number) {
   const today = startOfToday();
 
   const past = collection
