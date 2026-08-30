@@ -1,8 +1,8 @@
 ---
 import { getCollection } from "astro:content";
+import { startOfToday } from "../lib/global";
 
-const today = new Date();
-today.setHours(0, 0, 0, 0);
+const today = startOfToday();
 
 const announcements = await getCollection("announcements", ({ data }) => {
   return data.from <= today && data.to >= today;
@@ -13,7 +13,12 @@ const announcements = await getCollection("announcements", ({ data }) => {
   announcements.map((announcement) => (
     <div class="bg-amber-200 text-yellow-900 border-b border-yellow-300 p-2 text-center font-medium">
       {announcement.data.link ? (
-        <a href={announcement.data.link} class="hover:underline">
+        <a 
+          href={announcement.data.link} 
+          class="hover:underline"
+          target={announcement.data.link.startsWith('http') ? '_blank' : undefined}
+          rel={announcement.data.link.startsWith('http') ? 'noopener noreferrer' : undefined}
+        >
           {announcement.data.title}
         </a>
       ) : (
